@@ -18,7 +18,9 @@ con.connect(function(err) {
   if (err) throw err;
   console.log("Connected!");
 
-    let sql = "DROP TABLE if exists songlib; CREATE TABLE songlib (id INT NOT NULL AUTO_INCREMENT, title VARCHAR(100) not null, composer VARCHAR(100), parts VARCHAR(30), PRIMARY KEY (id)); DROP TABLE if exists event; CREATE TABLE event (id INT NOT NULL AUTO_INCREMENT, eventName VARCHAR(100) not null, location VARCHAR(100), date DATE, PRIMARY KEY (id));";
+    let sql = "DROP TABLE if exists admin;\
+    CREATE TABLE admin (userid INT NOT NULL AUTO_INCREMENT, username VARCHAR(20) not null, password VARCHAR(20), email VARCHAR(50), \
+    PRIMARY KEY (userid));";
   
   
     con.query(sql, function(err, result) {
@@ -26,7 +28,7 @@ con.connect(function(err) {
     console.log("Table creation `students` was successful!");
 
     console.log("Closing...");
-  }); */
+  });
 
   con.end();
 });

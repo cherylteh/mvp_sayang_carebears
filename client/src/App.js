@@ -1,4 +1,5 @@
 import './App.css';
+import RegLogin from './components/RegLogin';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           Learn React
         </a> */}
       </header>
+      <RegLogin />
     </div>
   );
 }
