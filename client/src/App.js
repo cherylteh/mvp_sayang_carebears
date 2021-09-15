@@ -1,26 +1,17 @@
+//import React, { useState } from "react";
+import MedInfo from "./components/medInfo";
 import './App.css';
 import RegLogin from './components/RegLogin';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        {/* <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a> */}
-      </header>
-      <RegLogin />
+    
+      <div>
+        Sayang App by Team CareBears
+        <MedInfo/>
+        
     </div>
-  );
+  )
 }
 
 export default App;

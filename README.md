@@ -42,6 +42,8 @@ Run `node model/database.js` in your **TERMINAL**, in the **project** folder (no
 - You can test your client app in `http://localhost:3000`
 - You can test your API in `http://localhost:5000`
 
+### Installing Vanilla Boostrap
+
 ## Basic Requirement
 
 ### 1. Database Schema
