@@ -19,13 +19,19 @@ con.connect(function(err) {
   console.log("Connected!");
 
     let sql = "DROP TABLE if exists admin;\
-    CREATE TABLE admin (userid INT NOT NULL AUTO_INCREMENT, username VARCHAR(20) not null, password VARCHAR(20), email VARCHAR(50), \
-    PRIMARY KEY (userid));";
+    CREATE TABLE admin (userID INT NOT NULL AUTO_INCREMENT, username VARCHAR(20) NOT NULL, password VARCHAR(20) NOT NULL, email VARCHAR(50), PRIMARY KEY (userID));\
+    DROP TABLE if exists Dependent;\
+    CREATE TABLE Dependent (depID int NOT NULL AUTO_INCREMENT, dep_name varchar(255) NOT NULL, meds varchar(255), PRIMARY KEY(depID));\
+    DROP TABLE if exists MedSup;\
+    CREATE TABLE MedSup (medID int NOT NULL AUTO_INCREMENT, medName varchar(255), medType varchar(255), medCondition varchar(255), dosage varchar(255), frequency varchar(255), PRIMARY KEY(medID));";
   
   
     con.query(sql, function(err, result) {
     if (err) throw err;
-    console.log("Table creation `students` was successful!");
+    console.log("Tables creations successful:\
+    `admin (userID, username, password, email)`, \
+    `Dependent (depID, dep_name, meds)`,\
+    `MedSup (medID, medName, medType, medCondition, dosage, frequency)`");
 
     console.log("Closing...");
   });
