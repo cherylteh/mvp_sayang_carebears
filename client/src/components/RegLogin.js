@@ -26,7 +26,7 @@ export default function RegLogin() {
         backgroundSize: "auto",
       }}
     >
-      <div className="container col-4 rounded-3 border border-primary bg-light bg-opacity-75 bg-gradient p-5 mt-5">
+      <div className="container col-4 rounded-3 border border-primary bg-light bg-opacity-75 bg-gradient p-5 mt-3">
         <div className="registration">
           <h1>Registration</h1>
           <label className="form-label">
