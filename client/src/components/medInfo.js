@@ -40,13 +40,14 @@ export default function MedInfo() {
   };
 
   return (
-    <div>
+    <div className="container col-3 rounded-3 border border-primary bg-light p-5 mt-5">
       <h3>Search for Drug Info</h3>
-      <i>Note: This seach is only applicable to USA FDA-approved drugs. 
+      <i className="text-muted">Note: This seach is only applicable to USA FDA-approved drugs. 
           For best results, please enter the generic name (vs brand name) </i>
         <p>
         <form onSubmit={handleSubmit}>
             <input
+            class="form-control border border-info"
             type="text"
             name="drugSearch"
             value={drugSearch}

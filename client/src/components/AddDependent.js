@@ -20,10 +20,10 @@ export default function AddDependent(props) {
   };
 
   return (
-    <div className="row">
-      <div className="col-6 col-md-4 rounded">
+    <div>
+      <div className="col-6 container rounded-3 border border-primary bg-light p-3">
         <form onSubmit={handleSubmit}>
-          <h5 className="p-3">Enter your dependent details here</h5>
+          <p>Enter your dependent details here</p>
           <div className="form-group">
             <label for="dependentName">Name</label>
             <input
