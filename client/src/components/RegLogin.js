@@ -8,51 +8,76 @@ export default function RegLogin() {
   const [password, setPassword] = useState("");
 
   const register = () => {
-    alert("register clicked!")
-  }
+    alert("register clicked!");
+  };
 
   const login = () => {
-    alert("login clicked!")
-  }
+    alert("login clicked!");
+  };
+
 
   return (
-    <div>
-      <div className="registration">
-        <h1>Registration</h1>
-        <label>Username</label>
-        <input
-          type="text"
-          onChange={(e) => {
-            setUsernameReg(e.target.value);
-          }}
-        />
-        <label>Password</label>
-        <input
-          type="text"
-          onChange={(e) => {
-            setPasswordReg(e.target.value);
-          }}
-        />
-        <button onClick={register}> Register </button>
-      </div>
+    <div
+      className="container"
+      style={{
+        background: `url("https://source.unsplash.com/1600x900/?medical")`,
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "center",
+        backgroundSize: "auto",
+      }}
+    >
+      <div className="container col-4 rounded-3 border border-primary bg-light bg-opacity-75 bg-gradient p-5 mt-3">
+        <div className="registration">
+          <h1>Registration</h1>
+          <label className="form-label">
+            Username
+            <input
+             class="form-control border border-info"
+              type="text"
+              onChange={(e) => {
+                setUsernameReg(e.target.value);
+              }}
+            />
+          </label>
+          <label className="form-label">
+            Password
+            <input
+             class="form-control border border-info"
+              type="password"
+              onChange={(e) => {
+                setPasswordReg(e.target.value);
+              }}
+            />
+          </label>
+          <button className="btn btn-primary rounded-pill" onClick={register}>
+            {" "}
+            Register{" "}
+          </button>
+        </div>
 
-      <div className="login">
-        <h1>Login</h1>
-        <input
-          type="text"
-          placeholder="Username..."
-          onChange={(e) => {
-            setUsername(e.target.value);
-          }}
-        />
-        <input
-          type="password"
-          placeholder="Password..."
-          onChange={(e) => {
-            setPassword(e.target.value);
-          }}
-        />
-        <button onClick={login}> Login </button>
+        <div className="login">
+          <h1>Login</h1>
+          <input
+           class="form-control border border-info"
+            type="text"
+            placeholder="Username..."
+            onChange={(e) => {
+              setUsername(e.target.value);
+            }}
+          />
+          <input
+           class="form-control border border-info"
+            type="password"
+            placeholder="Password..."
+            onChange={(e) => {
+              setPassword(e.target.value);
+            }}
+          />
+          <button className="btn btn-primary rounded-pill" onClick={login}>
+            {" "}
+            Login{" "}
+          </button>
+        </div>
       </div>
     </div>
   );

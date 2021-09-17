@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import MedInfo from "./components/medInfo";
 import "./App.css";
 import AddDependent from "./components/AddDependent";
+import RegLogin from "./components/RegLogin";
 
 function App() {
   const [dependent, setDependent] = useState([]);
@@ -27,6 +28,7 @@ function App() {
   return (
     <div>
       <h1>Sayang App by Team CareBears</h1>
+      <RegLogin />
       <AddDependent addDependent={project => handleAddDependent(project)}/>
       <MedInfo />
     </div>

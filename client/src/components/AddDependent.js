@@ -20,10 +20,11 @@ export default function AddDependent(props) {
   };
 
   return (
-    <div className="row">
-      <div className="col-6 col-md-4 rounded">
+    <div>
+      <div className="col-4 container rounded-3 border border-primary bg-light p-4 mt-3">
         <form onSubmit={handleSubmit}>
-          <h5 className="p-3">Enter your dependent details here</h5>
+          <h4>Add New Dependant</h4>
+          <small className="text-muted">Enter your dependent details here</small>
           <div className="form-group">
             <label for="dependentName">Name</label>
             <input
@@ -38,7 +39,7 @@ export default function AddDependent(props) {
           <p>medSup component here</p>
           {/* onSubmit is in form tag */}
           <button
-            className="btn btn-outline-primary btn-lg btn-block"
+            className="btn btn-outline-primary rounded-pill btn-block"
             type="sumbit"
           >
             Submit
