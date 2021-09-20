@@ -36,11 +36,12 @@ export default function AddDependent(props) {
               onChange={(e) => handleInputChange(e)}
             />
           </div>
+          
           <p>medSup component here</p>
           {/* onSubmit is in form tag */}
           <button
             className="btn btn-outline-primary rounded-pill btn-block"
-            type="sumbit"
+            type="submit"
           >
             Submit
           </button>
