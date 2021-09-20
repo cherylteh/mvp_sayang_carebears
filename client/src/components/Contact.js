@@ -27,6 +27,7 @@ export default function Contact(props) {
   };
 
   const handleSubmit = e => {
+    e.preventDefault();
     addContact();
     return false;
   };
@@ -36,6 +37,7 @@ export default function Contact(props) {
     deleteContact(contactID);
   }; */
 
+  //ADD NEW CONTACT
   const addContact = () => {
     fetch("/contact", {
       method: "POST",
@@ -47,21 +49,20 @@ export default function Contact(props) {
       .then(res => {
         return res.json();
         //console.log(res.json());
-        //
 
       })
       .then(data => {
         setContact(data);
         console.log("New Contact Added", data);
-        props.updateEvent();
+        //props.updateContact();
 
       })
-      .catch(err => {
-        console.error("Error", err);
+      .catch(error => {
+        console.error("Error", error);
       });
   };
 
-
+  //DELETE CONTACT by ID
   const deleteContact = contactID => {
     //console.log("in Fetch", id); //to check if it's passing through
     fetch(`/contact/${contactID}`, {
@@ -88,62 +89,60 @@ export default function Contact(props) {
   return (
     <div>
     <div className="col-4 container rounded-3 border border-primary bg-light p-4 mt-3">
-        <h4>Contact List</h4>
-            {contact.map(item => {
-                return (
-                    <li key={item.contactID}>
-                        <li>{item.contactName}</li>
-                        <li>{item.telNo}</li>
-                        <li>{item.relationship}</li>
-                    </li> 
-                );
-            })};
+      <h4>Central Contact List</h4>
+        {contact.map(item => {
+          return (
+            <ul key={item.contactID}>
+            <li>Name: {item.contactName}</li>
+            <li>Contact: {item.telNo}</li>
+            <li>Relationship: {item.relationship}</li>
+            </ul> 
+          );
+        })}
 
-        <h4>Add New Contact</h4>
-            <small className="text-muted">Enter Frequent Contacts here</small>
-            <div className="form-group">
-            <form>
-                <label for="contactName">Contact Name</label>
-                    <input
-                    // label="Contact Name"
-                    id="contactName"
-                    type="text"
-                    className="form-control"
-                    placeholder="Enter Contact Name"
-                    name="contactName"
-                    onChange={(e) => handleChange(e)}
-                    />
+    <h4>Add New Contact</h4>
+      <small className="text-muted">Enter Frequent Contacts here</small>
+        <div className="form-group">
+         <form>
+          <label for="contactName">Contact Name</label>
+            <input
+             // label="Contact Name"
+             id="contactName"
+             type="text"
+             className="form-control"
+             placeholder="Enter Contact Name"
+             name="contactName"
+             onChange={(e) => handleChange(e)}
+            />
           
-                <label for="telNo">Tel No</label>
-                    <input
-                    id="telNo"
-                    type="text"
-                    className="form-control"
-                    placeholder="Enter Tel No"
-                    name="telNo"
-                    onChange={(e) => handleChange(e)}
-                    />
+          <label for="telNo">Tel No</label>
+            <input
+             id="telNo"
+             type="text"
+             className="form-control"
+             placeholder="Enter Tel No"
+             name="telNo"
+             onChange={(e) => handleChange(e)}
+            />
 
-                <label for= "telNo">Relationship</label>
-                    <input
-                    id="relationship"
-                    type="text"
-                    className="form-control"
-                    placeholder="Relationship to Dependent"
-                    name="relationship"
-                    onChange={(e) => handleChange(e)}
-                    />
+          <label for= "telNo">Relationship</label>
+             <input
+              id="relationship"
+              type="text"
+              className="form-control"
+              placeholder="Relationship to Dependent"
+              name="relationship"
+              onChange={(e) => handleChange(e)}
+             />
 
-                <button onClick ={(e) => handleSubmit(e)}
-                    className="btn btn-outline-primary rounded-pill btn-block"
-                    type="submit"
-                    value="submit"
-                >Submit Contact
-                </button>
-            </form>
-            </div>
-
-            
+          <button onClick ={(e) => handleSubmit(e)}
+            className="btn btn-outline-primary rounded-pill btn-block"
+            type="submit"
+            value="submit"
+          >Submit Contact
+          </button>
+        </form>
+      </div>    
     </div>
     </div>
   );
