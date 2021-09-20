@@ -18,20 +18,23 @@ con.connect(function(err) {
   if (err) throw err;
   console.log("Connected!");
 
-    let sql = "DROP TABLE if exists admin;\
-    CREATE TABLE admin (userID INT NOT NULL AUTO_INCREMENT, username VARCHAR(20) NOT NULL, password VARCHAR(20) NOT NULL, email VARCHAR(50), PRIMARY KEY (userID));\
-    DROP TABLE if exists Dependent;\
-    CREATE TABLE Dependent (depID int NOT NULL AUTO_INCREMENT, dep_name varchar(255) NOT NULL, meds varchar(255), PRIMARY KEY(depID));\
-    DROP TABLE if exists MedSup;\
-    CREATE TABLE MedSup (medID int NOT NULL AUTO_INCREMENT, medName varchar(255), medType varchar(255), medCondition varchar(255), dosage varchar(255), frequency varchar(255), PRIMARY KEY(medID));";
+    let sql = "DROP TABLE if exists users;\
+    CREATE TABLE users (userID INT NOT NULL AUTO_INCREMENT, username VARCHAR(50) NOT NULL, password VARCHAR(255) NOT NULL, email VARCHAR(50), PRIMARY KEY (userID));\
+    INSERT INTO users (username, password) values ('testusername01', 'testpassword01');\
+    DROP TABLE if exists dependent;\
+    CREATE TABLE dependent (depID int NOT NULL AUTO_INCREMENT, dep_name varchar(255) NOT NULL, meds varchar(255), PRIMARY KEY(depID));\
+    DROP TABLE if exists medsup;\
+    CREATE TABLE medsup (medID int NOT NULL AUTO_INCREMENT, medName varchar(255), medType varchar(255), medCondition varchar(255), dosage varchar(255), frequency varchar(255), PRIMARY KEY(medID));\
+    DROP TABLE if exists contact;\
+    CREATE TABLE contact (contactID int NOT NULL AUTO_INCREMENT, contactName varchar(255) NOT NULL, telNo varchar(255), relationship varchar(255), PRIMARY KEY(contactID));"
   
   
     con.query(sql, function(err, result) {
     if (err) throw err;
     console.log("Tables creations successful:\
     `admin (userID, username, password, email)`, \
-    `Dependent (depID, dep_name, meds)`,\
-    `MedSup (medID, medName, medType, medCondition, dosage, frequency)`");
+    `dependent (depID, dep_name, meds)`,\
+    `medsup (medID, medName, medType, medCondition, dosage, frequency)`");
 
     console.log("Closing...");
   });
