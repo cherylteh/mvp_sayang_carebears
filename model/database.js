@@ -32,9 +32,10 @@ con.connect(function(err) {
     con.query(sql, function(err, result) {
     if (err) throw err;
     console.log("Tables creations successful:\
-    `admin (userID, username, password, email)`, \
+    `users (userID, username, password, email)`, \
     `dependent (depID, dep_name, meds)`,\
-    `medsup (medID, medName, medType, medCondition, dosage, frequency)`");
+    `medsup (medID, medName, medType, medCondition, dosage, frequency)`\
+    `contact (contactID, contactName, telNo, relationship ) ");
 
     console.log("Closing...");
   });
