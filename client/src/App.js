@@ -1,35 +1,17 @@
 import React, { useState } from "react";
-import MedInfo from "./components/medInfo";
+import MedInfo from "./components/MedInfo";
 import "./App.css";
 import Contact from "./components/Contact";
-import AddDependent from "./components/AddDependent";
+import Dependent from "./components/Dependent";
 import RegLogin from "./components/RegLogin";
 
 function App() {
-  const [dependent, setDependent] = useState([]);
 
-  const handleAddDependent = project => {
-    fetch("/", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ dependent })
-    })
-      .then(res => res.json())
-      .then(dependent => {
-        setDependent(dependent);
-        alert(`New Dependent ${dependent.dep_name} Added`);
-      })
-      .catch(error => {
-        console.log(error);
-      });
-  };
 
   return (
     <div>
       <RegLogin />
-      <AddDependent addDependent={project => handleAddDependent(project)}/>
+      <Dependent/>
       <Contact />
       <MedInfo />
     </div>
