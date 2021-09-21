@@ -9,12 +9,14 @@ function App() {
 
 
   return (
+
     <div>
       <RegLogin />
       <Dependent/>
       <Contact />
       <MedInfo />
     </div>
+
   );
 }
 

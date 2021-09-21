@@ -18,14 +18,7 @@ export default function RegLogin() {
 
   return (
     <div
-      className="container"
-      style={{
-        background: `url("https://source.unsplash.com/1600x900/?medical")`,
-        backgroundRepeat: "no-repeat",
-        backgroundPosition: "center",
-        backgroundSize: "auto",
-      }}
-    >
+      className="container">
       <div className="container col-4 rounded-3 border border-primary bg-light bg-opacity-75 bg-gradient p-5 mt-3">
         <div className="registration">
           <h1>Registration</h1>
