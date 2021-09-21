@@ -35,7 +35,7 @@ router.get("/medName/:medName", function(req, res, next) {
 router.post("/", function(req, res, next) {
   //let newContact = req.body;
   db(
-    `INSERT INTO medsup (medName, medType, medCondition, dosage, frequency) VALUES("${req.body.medName}", "${req.body.medType}", "${req.body.medCondition}", "${req.body.dosage}", "${req.body.frequency}");`
+    `INSERT INTO medsup (medName, medType, medCondition, dosage, frequency, depID) VALUES("${req.body.medName}", "${req.body.medType}", "${req.body.medCondition}", "${req.body.dosage}", "${req.body.frequency}", ${req.body.depID});`
   ).then(results => {
       getAllMedSup(req, res); // get full list of contacts
       //res.status(201).send("New contact added");

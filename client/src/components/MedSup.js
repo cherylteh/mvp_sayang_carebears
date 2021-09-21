@@ -22,7 +22,7 @@ export default function MedSup(props) {
   };
 
   const handleChange = e => {
-    //console.log(e.target.value);
+    console.log(e.target.value);
     setInput({ ...input, [e.target.name]: e.target.value});
   };
 
@@ -48,14 +48,10 @@ export default function MedSup(props) {
     })
       .then(res => {
         return res.json();
-        //console.log(res.json());
-
-      })
+        })
       .then(data => {
-        setContact(data);
+        setMedSup(data);
         console.log("New Meds Added", data);
-        //props.updateContact();
-
       })
       .catch(error => {
         console.error("Error", error);
@@ -78,7 +74,6 @@ export default function MedSup(props) {
       .then(res => {
         console.log(res);
         setMedSup(res);
-        //props.updateEvent();
         console.log("Meds Deleted");
       })
       .catch(err => {
@@ -106,13 +101,13 @@ export default function MedSup(props) {
       <small className="text-muted">Enter Medication and Supplements here</small>
         <div className="form-group">
          <form>
-          <label for="contactName">Meds / Supplment Name</label>
+          <label for="medName">Meds / Supplement Name</label>
             <input
-             id="medsName"
+             id="medName"
              type="text"
              className="form-control"
              placeholder="Enter Meds/Supplement Name"
-             name="medsName"
+             name="medName"
              onChange={(e) => handleChange(e)}
             />
           
@@ -141,7 +136,7 @@ export default function MedSup(props) {
               id="dosage"
               type="text"
               className="form-control"
-              placeholder="e.g 2 tablets / 3 times per day"
+              placeholder="e.g 2 tablets"
               name="dosage"
               onChange={(e) => handleChange(e)}
              />
@@ -151,7 +146,7 @@ export default function MedSup(props) {
               id="frequency"
               type="text"
               className="form-control"
-              placeholder="Breakfast / Lunch / Dinner"
+              placeholder="e.g 3 times/day"
               name="frequency"
               onChange={(e) => handleChange(e)}
              />
@@ -160,7 +155,7 @@ export default function MedSup(props) {
             className="btn btn-outline-primary rounded-pill btn-block"
             type="submit"
             value="submit"
-          >Submit
+          >Submit MedSup
           </button>
         </form>
       </div>    

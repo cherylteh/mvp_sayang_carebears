@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import MedInfo from "./components/MedInfo";
 import "./App.css";
 import Contact from "./components/Contact";
 import Dependent from "./components/Dependent";
+import MedInfo from "./components/MedInfo";
+import MedSup from "./components/MedSup";
 import RegLogin from "./components/RegLogin";
 
 function App() {
@@ -12,7 +13,8 @@ function App() {
 
     <div>
       <RegLogin />
-      <Dependent/>
+      <Dependent/> 
+      <MedSup/>
       <Contact />
       <MedInfo />
     </div>

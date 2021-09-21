@@ -54,8 +54,6 @@ export default function Contact(props) {
       .then(data => {
         setContact(data);
         console.log("New Contact Added", data);
-        //props.updateContact();
-
       })
       .catch(error => {
         console.error("Error", error);
@@ -78,7 +76,6 @@ export default function Contact(props) {
       .then(res => {
         console.log(res);
         setContact(res);
-        //props.updateEvent();
         console.log("Contact Deleted");
       })
       .catch(err => {
