@@ -11,7 +11,6 @@ Sayang for Caregivers, final MVP Project for MYS03 by Team CareBears, consisting
 ### Dependencies
 
 - Run `npm install` in the project folder to install dependencies related to Express (the server).
-- Run `npm install jsonwebtoken bcrypt` in the project folder to install dependencies related to Json Web Token.
 - `cd client` and run `npm install` install dependencies related to React (the client).
 
 ### Database Prep
@@ -21,8 +20,10 @@ Create `.env` file in project directory and add
 ```
 DB_NAME=sayang
 DB_PASS=YOUR_PASSWORD
+SUPER_SECRET=YOUR_SECRET_KEY
+
 ```
-(replace `YOUR_PASSWORD` with your actual password)
+(replace `YOUR_PASSWORD` with your actual password and `YOUR_SECRET_KEY` with a key of your choosing.)
 
 Alternatively, you can rename the provided `.env.example` file to `.env`.
 
