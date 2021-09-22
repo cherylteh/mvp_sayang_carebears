@@ -3,24 +3,34 @@ const express = require('express');
 const router = express.Router();
 
 const getAllMedSup = (req, res) => {
-  db("SELECT * FROM medsup ORDER BY medName ASC;")
+  db(`SELECT * FROM medsup ORDER BY depID ASC;`)
     .then(results => {
       res.send(results.data);
     })
     .catch(err => console.log(err));
 };
 
-//GET All MEDS and SUP (by Name)
-router.get('/', function(req, res, next) {
+//GET All MEDS and SUP (by Dependent ID)
+router.get('/dep/:depID', function(req, res, next) {
   //res.send('respond with a resource');
-  db("SELECT * FROM medsup ORDER BY medName ASC;")
+  db(`SELECT * FROM medsup WHERE depID=${req.params.depID};`)
     .then(results => {
       res.send(results.data);
     })
     .catch(err => res.status(500).send(err));
 });
 
-// GET meds by Name
+//GET All MEDS and SUP (by Name of Meds) e.g. localhost:5000/medsup - WORKS
+router.get('/', function(req, res, next) {
+  //res.send('respond with a resource');
+  db(`SELECT * FROM medsup ORDER BY medName ASC;`)
+    .then(results => {
+      res.send(results.data);
+    })
+    .catch(err => res.status(500).send(err));
+});
+
+// GET Meds Only by Name e.g. localhost:5000/medsup/medName/Aricept - WORKS
 router.get("/medName/:medName", function(req, res, next) {
   db(`SELECT * FROM medsup WHERE medName ="${req.params.medName}";`)
     .then(results => {

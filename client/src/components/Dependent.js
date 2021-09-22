@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 export default function Dependent(props) {
   let [dependent, setDependent] = useState([]);
   let [input, setInput] = useState({});
-
+  
 
   useEffect(() => {
     getDependent();
@@ -86,12 +86,13 @@ return (
         <small className="text-muted">Click on names to view records</small>
             {dependent.map(item => {
                 return (
-                    <ul key={item.depID}>
-                        <li>Name: {item.dep_name}</li>
-                    </ul> 
+                  <ul>
+                    <li key={item.depID}> Name: {item.dep_name} (depID:{item.depID}) </li>
+                  </ul> 
                 );
             })}
-      
+
+     
       <h4>Add New Dependant</h4>
       <form>
         <small className="text-muted">Enter your dependent details here</small>

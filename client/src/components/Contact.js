@@ -86,17 +86,7 @@ export default function Contact(props) {
   return (
     <div>
     <div className="col-4 container rounded-3 border border-primary bg-light p-4 mt-3">
-      <h4>Central Contact List</h4>
-        {contact.map(item => {
-          return (
-            <ul key={item.contactID}>
-            <li>Name: {item.contactName}</li>
-            <li>Contact: {item.telNo}</li>
-            <li>Relationship: {item.relationship}</li>
-            </ul> 
-          );
-        })}
-
+      
     <h4>Add New Contact</h4>
       <small className="text-muted">Enter Frequent Contacts here</small>
         <div className="form-group">
@@ -139,6 +129,18 @@ export default function Contact(props) {
           >Submit Contact
           </button>
         </form>
+
+        <h4>Central Contact List</h4>
+        {contact.map(item => {
+          return (
+            <ul key={item.contactID}>
+            <li>Name: {item.contactName}</li>
+            <li>Contact: {item.telNo}</li>
+            <li>Relationship: {item.relationship}</li>
+            </ul> 
+          );
+        })}
+        
       </div>    
     </div>
     </div>
