@@ -10,11 +10,13 @@ const NaviBar = () => {
             <Link to="/register">Register</Link>
           </span>
         </li>
+        
         <li className="nav-item">
           <span className="nav-link">
             <Link to="/login">Login</Link>
           </span>
         </li>
+        
         <li className="nav-item">
           <span className="nav-link">
             <Link to="/dashboard">Dashboard</Link>
@@ -23,7 +25,7 @@ const NaviBar = () => {
         
         <li className="nav-item">
           <span className="nav-link">
-            <Link to="/medsup">Medication & Supplement</Link>
+            <Link to="/medsup">Medication & Supplements</Link>
           </span>
         </li>
         
