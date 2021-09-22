@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 export default function Dependent(props) {
   let [dependent, setDependent] = useState([]);
   let [input, setInput] = useState({});
-  
 
   useEffect(() => {
     getDependent();
@@ -11,22 +10,22 @@ export default function Dependent(props) {
 
   const getDependent = () => {
     fetch("/dependent")
-      .then(response => response.json())
-      .then(dependent => {
-          console.log(dependent);
-          setDependent(dependent);
+      .then((response) => response.json())
+      .then((dependent) => {
+        console.log(dependent);
+        setDependent(dependent);
       })
-      .catch(error => {
-          console.log("Error in getDependent");
+      .catch((error) => {
+        console.log("Error in getDependent");
       });
   };
 
-  const handleChange = e => {
+  const handleChange = (e) => {
     //console.log(e.target.value);
-    setInput({ ...input, [e.target.name]: e.target.value});
+    setInput({ ...input, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     addDependent();
     return false;
@@ -37,65 +36,69 @@ export default function Dependent(props) {
     fetch("/dependent", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify(input)
+      body: JSON.stringify(input),
     })
-      .then(res => {
+      .then((res) => {
         return res.json();
       })
-      .then(data => {
+      .then((data) => {
         setDependent(data);
         console.log("New Dependent Added", data);
         //props.updateDependent()
         //alert(`New Dependent ${dependent.dep_name} Added`);
       })
-      .catch(error => {
+      .catch((error) => {
         console.log(error);
       });
-    };
-  
-  //DELETE DEPENDENT BY ID  
-  const deleteDependent = depID => {
+  };
+
+  //DELETE DEPENDENT BY ID
+  const deleteDependent = (depID) => {
     //console.log("in Fetch", id); //to check if it's passing through
     fetch(`/dependent/${depID}`, {
       method: "DELETE",
       headers: {
-        "Content-Type": "application/json"
-      }
+        "Content-Type": "application/json",
+      },
     })
-      .then(res => {
+      .then((res) => {
         console.log(res);
         return res.json();
       })
-      .then(res => {
+      .then((res) => {
         console.log(res);
         setDependent(res);
-       //props.updateEvent();
+        //props.updateEvent();
         console.log("Dependent Deleted");
       })
-      .catch(err => {
+      .catch((err) => {
         console.error(err.message);
       });
   };
-    
-return (
+
+  return (
     <div>
-      <div className="col-4 container rounded-3 border border-primary bg-light p-4 mt-3">
+      <div className="card rounded-3 border border-primary bg-light p-4">
         <h4>Dependents List</h4>
         <small className="text-muted">Click on names to view records</small>
-            {dependent.map(item => {
-                return (
-                  <ul>
-                    <li key={item.depID}> Name: {item.dep_name} (depID:{item.depID}) </li>
-                  </ul> 
-                );
-            })}
+        {dependent.map((item) => {
+          return (
+            <ul>
+              <li key={item.depID}>
+                {" "}
+                Name: {item.dep_name} (depID:{item.depID}){" "}
+              </li>
+            </ul>
+          );
+        })}
 
-     
-      <h4>Add New Dependant</h4>
-      <form>
-        <small className="text-muted">Enter your dependent details here</small>
+        <h4>Add New Dependant</h4>
+        <form>
+          <small className="text-muted">
+            Enter your dependent details here
+          </small>
           <div className="form-group">
             <label for="dependentName">Name</label>
             <input
@@ -107,17 +110,19 @@ return (
               onChange={(e) => handleChange(e)}
             />
           </div>
-          
+
           <p>medSup component here</p>
           {/* onSubmit is in form tag */}
-          <button onClick ={(e) => handleSubmit(e)}
+          <button
+            onClick={(e) => handleSubmit(e)}
             className="btn btn-outline-primary rounded-pill btn-block"
             type="submit"
             value="submit"
-          >Submit Dependent
+          >
+            Submit Dependent
           </button>
-      </form>
-    </div>
+        </form>
+      </div>
     </div>
   );
 }
