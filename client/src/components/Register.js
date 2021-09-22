@@ -26,8 +26,11 @@ export default function Register() {
 
   return (
     <div className="registration container col-4 rounded-3 border border-primary bg-light bg-opacity-75 bg-gradient p-5 mt-3">
-      <h1>Registration</h1>
-      <label className="form-label">
+      <img src = "https://i.postimg.cc/nMf8mcFH/Logo-sayang-sq.jpg"/>
+      <h1>Create Account</h1>
+      <small className="text-muted">Please enter the following below to create an account</small>
+
+      <p/><label className="form-label">
         Username
         <input
           className="form-control border border-info"
@@ -39,7 +42,8 @@ export default function Register() {
           }}
         />
       </label>
-      <label className="form-label">
+      
+      <p/><label className="form-label">
         Password
         <input
           className="form-control border border-info"
@@ -51,9 +55,12 @@ export default function Register() {
           }}
         />
       </label>
-      <button className="btn btn-primary rounded-pill" onClick={register}>
+
+      <p/><button className="btn btn-primary rounded-pill" onClick={register}>
         Register
       </button>
+
+      <p/><small className="text-muted">Already have an account? Login here</small>
     </div>
   );
 }

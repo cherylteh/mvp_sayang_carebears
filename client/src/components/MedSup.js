@@ -22,7 +22,7 @@ export default function MedSup(props) {
   };
 
   const handleChange = e => {
-    console.log(e.target.value);
+    //console.log(e.target.value); // to check on input
     setInput({ ...input, [e.target.name]: e.target.value});
   };
 
@@ -88,6 +88,7 @@ export default function MedSup(props) {
         {medsup.map(item => {
           return (
             <ul key={item.medID}>
+            <li>Dependent ID: {item.depID}</li>
             <li>Name: {item.medName}</li>
             <li>Type: {item.medType}</li>
             <li>Condition: {item.medCondition}</li>
@@ -101,7 +102,18 @@ export default function MedSup(props) {
       <small className="text-muted">Enter Medication and Supplements here</small>
         <div className="form-group">
          <form>
-          <label for="medName">Meds / Supplement Name</label>
+
+         <label for="depID">Enter Dependent ID</label>
+            <input
+             id="depID"
+             type="int"
+             className="form-control"
+             placeholder="Enter Dependent ID"
+             name="depID"
+             onChange={(e) => handleChange(e)}
+            />
+
+        <label for="medName">Meds / Supplement Name</label>
             <input
              id="medName"
              type="text"
@@ -111,7 +123,7 @@ export default function MedSup(props) {
              onChange={(e) => handleChange(e)}
             />
           
-            <label for="medType">Medication or Supplement?</label>
+        <label for="medType">Medication or Supplement?</label>
             <input
              id="medType"
              type="text"
@@ -121,8 +133,8 @@ export default function MedSup(props) {
              onChange={(e) => handleChange(e)}
             />
 
-            <label for= "medCondition">Condition</label>
-             <input
+        <label for= "medCondition">Condition</label>
+            <input
               id="medCondition"
               type="text"
               className="form-control"
@@ -131,32 +143,33 @@ export default function MedSup(props) {
               onChange={(e) => handleChange(e)}
              />
 
-            <label for= "dosage">Dosage</label>
-             <input
+        <label for= "dosage">Dosage</label>
+            <input
               id="dosage"
               type="text"
               className="form-control"
               placeholder="e.g 2 tablets"
               name="dosage"
               onChange={(e) => handleChange(e)}
-             />
+            />
 
-            <label for= "frequency">Frequency</label>
-             <input
+        <label for= "frequency">Frequency</label>
+            <input
               id="frequency"
               type="text"
               className="form-control"
               placeholder="e.g 3 times/day"
               name="frequency"
               onChange={(e) => handleChange(e)}
-             />
+            />
 
-          <button onClick ={(e) => handleSubmit(e)}
+        <button onClick ={(e) => handleSubmit(e)}
             className="btn btn-outline-primary rounded-pill btn-block"
             type="submit"
             value="submit"
-          >Submit MedSup
-          </button>
+        >Submit MedSup
+        </button>
+
         </form>
       </div>    
     </div>
