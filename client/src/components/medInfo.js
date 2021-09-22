@@ -40,7 +40,7 @@ export default function MedInfo() {
   };
 
   return (
-    <div className="container col-3 rounded-3 border border-primary bg-light p-4 mt-3">
+    <div className="card rounded-3 border border-primary bg-light p-4 pt-3">
       <h3>Search for Drug Info</h3>
       <i>
         <small className="text-muted">
@@ -71,17 +71,19 @@ export default function MedInfo() {
       </div>
 
       <div>
-        <small  className="text-muted">
+        <small className="text-muted">
           If the medication you are searching for is not FDA-approved, please
           search using the following websites:
           <br />
           <a href="https://mims.com" target="_blank">
             MIMS
-          </a> - <i>Asia-based.</i>
+          </a>{" "}
+          - <i>Asia-based.</i>
           <br />
           <a href="https://www.medicines.org.uk/emc/" target="_blank">
             Medicines.org.uk
-          </a> - <i>UK-based.</i>
+          </a>{" "}
+          - <i>UK-based.</i>
         </small>
       </div>
     </div>

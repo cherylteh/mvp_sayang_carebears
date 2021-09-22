@@ -19,15 +19,23 @@ con.connect(function(err) {
   console.log("Connected!");
 
     let sql = "DROP TABLE if exists users;\
-    CREATE TABLE users (userID INT NOT NULL AUTO_INCREMENT, username VARCHAR(50) NOT NULL, password VARCHAR(255) NOT NULL, email VARCHAR(50), PRIMARY KEY (userID));\
-    INSERT INTO users (username, password) values ('testusername01', 'testpassword01');\
+    CREATE TABLE users(\
+      userID INT NOT NULL AUTO_INCREMENT,\
+      username VARCHAR(50) NOT NULL,\
+      password VARCHAR(255) NOT NULL,\
+      email VARCHAR(50),\
+      PRIMARY KEY (userID));\
+    INSERT INTO users \
+    (username, password)\
+    values ('testusername01', 'testpassword01');\
     DROP TABLE if exists dependent;\
     CREATE TABLE dependent (depID int NOT NULL AUTO_INCREMENT, dep_name varchar(255) NOT NULL, meds varchar(255), PRIMARY KEY(depID));\
     DROP TABLE if exists medsup;\
-    CREATE TABLE medsup (medID int NOT NULL AUTO_INCREMENT, medName varchar(255), medType varchar(255), medCondition varchar(255), dosage varchar(255), frequency varchar(255), PRIMARY KEY(medID));\
+    CREATE TABLE medsup (medID int NOT NULL AUTO_INCREMENT, medName varchar(255), medType varchar(255), medCondition varchar(255), dosage varchar(255), frequency varchar(255), depID int, PRIMARY KEY (medID), FOREIGN KEY (depID) REFERENCES dependent(depID));\
     DROP TABLE if exists contact;\
+    INSERT INTO medsup (medName, medType, medCondition, dosage, frequency, depID)\
+    VALUES ('Aricept', 'Medication', 'Dementia', '2 tablets', '2 times/day', 1);\
     CREATE TABLE contact (contactID int NOT NULL AUTO_INCREMENT, contactName varchar(255) NOT NULL, telNo varchar(255), relationship varchar(255), PRIMARY KEY(contactID));"
-  
   
     con.query(sql, function(err, result) {
     if (err) throw err;

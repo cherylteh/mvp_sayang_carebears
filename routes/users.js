@@ -10,22 +10,15 @@ const saltRounds = 10;
 const supersecret = process.env.SUPER_SECRET;
 
 /* 
-router.get("/", (req, res) => {
-  console.log("checking if getting thru");
-  res.send("Welcome to the API");
-});
- */ 
-
 router.get('/', function(req, res, next) {
-  console.log("testing");
   db("SELECT * FROM users;")
     .then(results => {
       res.send(results.data);
     })
-    .catch(err => res.status(500).send(err, "what the heck"));
+    .catch(err => res.status(500).send(err));
 });
+ */ 
 
- 
 router.post("/register", async (req, res) => {
   const { usernameReg, passwordReg } = req.body;
 
