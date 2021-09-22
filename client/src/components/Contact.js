@@ -82,63 +82,80 @@ export default function Contact(props) {
   };
 
   return (
-      <div className="card rounded-3 border border-primary bg-light p-4">
-        <h4>Add New Contact</h4>
-        <small className="text-muted">Enter Frequent Contacts here</small>
-        <div className="form-group">
-          <form>
-            <label for="contactName">Contact Name</label>
-            <input
-              // label="Contact Name"
-              id="contactName"
-              type="text"
-              className="form-control"
-              placeholder="Enter Contact Name"
-              name="contactName"
-              onChange={(e) => handleChange(e)}
-            />
+    <div class="container">
+      <div className="row align-items-start">
+        <div class="col">{/* ADD FORM  */} 
+        <div className="mb-3 container rounded-3 border border-primary bg-light p-4">
+          <h5>Add New Contact</h5>
+            <small className="text-muted">Enter Frequent Contacts here</small>
+        
+            <p/><div className="form-group">
+              <form className="form-floating">
 
-            <label for="telNo">Tel No</label>
-            <input
-              id="telNo"
-              type="text"
-              className="form-control"
-              placeholder="Enter Tel No"
-              name="telNo"
-              onChange={(e) => handleChange(e)}
-            />
+              <div class="form-floating m-3">
+                <input
+                  id="floatingInputValue"
+                  type="text"
+                  className="form-control"
+                  placeholder="Enter Contact Name"
+                  name="contactName"
+                  onChange={(e) => handleChange(e)}
+                />
+                <label for="floatingInputValue">Contact Name</label>
+              </div>
 
-            <label for="telNo">Relationship</label>
-            <input
-              id="relationship"
-              type="text"
-              className="form-control"
-              placeholder="Relationship to Dependent"
-              name="relationship"
-              onChange={(e) => handleChange(e)}
-            />
+              <div class="form-floating m-3">
+                <input
+                  id="floatingInputValue"
+                  type="text"
+                  className="form-control"
+                  placeholder="Enter Tel No"
+                  name="telNo"
+                  onChange={(e) => handleChange(e)}
+                />
+                <label for="floatingInputValue">Tel No</label>
+              </div>
+            
+              <div class="form-floating m-3">
+                <input
+                  id="floatingInputValue"
+                  type="text"
+                  className="form-control"
+                  placeholder="Relationship to Dependent"
+                  name="relationship"
+                  onChange={(e) => handleChange(e)}
+                />
+                <label for="floatingInputValue">Relationship</label>
+              </div>
 
-            <button
-              onClick={(e) => handleSubmit(e)}
-              className="btn btn-outline-primary rounded-pill btn-block"
-              type="submit"
-              value="submit"
-            >
-              Submit Contact
-            </button>
-          </form>
+                <button
+                  onClick={(e) => handleSubmit(e)}
+                  className="btn btn-outline-primary rounded-pill btn-block"
+                  type="submit"
+                  value="submit"
+                >
+                  Submit Contact
+                </button>
+              </form>
+            </div>
+        </div>
+        </div>
 
-          <h4>Central Contact List</h4>
-          {contact.map((item) => {
-            return (
-              <ul key={item.contactID}>
-                <li>Name: {item.contactName}</li>
-                <li>Contact: {item.telNo}</li>
-                <li>Relationship: {item.relationship}</li>
-              </ul>
-            );
-          })}
+        <div class="col">{/*  CONTACT LIST */}
+        <div className="mb-3 container rounded-3 border border-primary bg-light p-4">
+          <h5>Central Contact List</h5>
+            {contact.map((item) => {
+              return (
+                <ul key={item.contactID}>
+                  <li>Name: {item.contactName}</li>
+                  <li>Contact: {item.telNo}</li>
+                  <li>Relationship: {item.relationship}</li>
+                </ul>
+              );
+            })}
         </div>
       </div>
+      </div>
+    </div>      
   );
 }

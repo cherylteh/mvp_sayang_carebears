@@ -1,7 +1,7 @@
 import React from "react";
 import Contact from "./Contact";
 import Dependent from "./Dependent";
-import MedInfo from "./medInfo";
+import MedInfo from "./MedInfo";
 
 const Dashboard = () => {
   return (
