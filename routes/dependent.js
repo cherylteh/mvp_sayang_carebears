@@ -10,7 +10,7 @@ const getAllDependents = (req, res) => {
     .catch(err => res.status(500).send(err));
 };
 
-// GET ALL Dependents - WORKING
+// GET ALL Dependents - e.g. localhost:5000/dependent - WORKING
 router.get('/', function(req, res, next) {
   db("SELECT * FROM dependent ORDER BY depID ASC;")
     .then(results => {
@@ -19,7 +19,7 @@ router.get('/', function(req, res, next) {
     .catch(err => res.status(500).send(err));
 });
 
-// GET Dependent by ID - WORKING
+// GET Dependent by ID - e.g. localhost:5000/dependent/1 - WORKING
 router.get("/:id", function(req, res, next) {
   db(`SELECT * FROM dependent WHERE depID=${req.params.id};`)
     .then(results => {
