@@ -82,10 +82,33 @@ export default function Contact(props) {
   };
 
   return (
-    <div class="container">
-      <div className="row align-items-start">
-        <div class="col">{/* ADD FORM  */} 
-        <div className="mb-3 container rounded-3 border border-primary bg-light p-4">
+    <div className="mb-3 container rounded-3 border border-primary bg-light p-4 mt-3">
+      <h5>Central Contact List</h5>
+        {contact.map((item) => {
+          return (
+            <ul key={item.contactID}>
+              <li>Name: {item.contactName}</li>
+              <li>Contact: {item.telNo}</li>
+               <li>Relationship: {item.relationship}</li>
+            </ul>
+          );
+        })}
+          
+      <p/>
+        <button 
+          class="btn btn-outline-primary btn-sm rounded-pill btn-bloc" 
+          type="button" 
+          data-bs-toggle="collapse" 
+          data-bs-target="#addNewContact" 
+          aria-expanded="false" 
+          aria-controls="addNewContact">
+          + New Contact
+        </button>
+    
+        
+        {/* ADD FORM  */} 
+       <p/><div class="collapse" id="addNewContact">
+        <div class="card card-body">
           <h5>Add New Contact</h5>
             <small className="text-muted">Enter Frequent Contacts here</small>
         
@@ -134,28 +157,14 @@ export default function Contact(props) {
                   type="submit"
                   value="submit"
                 >
-                  Submit Contact
+                  Click to Add
                 </button>
               </form>
             </div>
         </div>
         </div>
-
-        <div class="col">{/*  CONTACT LIST */}
-        <div className="mb-3 container rounded-3 border border-primary bg-light p-4">
-          <h5>Central Contact List</h5>
-            {contact.map((item) => {
-              return (
-                <ul key={item.contactID}>
-                  <li>Name: {item.contactName}</li>
-                  <li>Contact: {item.telNo}</li>
-                  <li>Relationship: {item.relationship}</li>
-                </ul>
-              );
-            })}
+        {/* End of ADD FORM  */} 
         </div>
-      </div>
-      </div>
-    </div>      
+         
   );
 }

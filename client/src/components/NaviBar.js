@@ -6,6 +6,7 @@ const NaviBar = ({ loggedIn }) => {
   return (
     <div class="container">
       <nav class="navbar fixed-top navbar-light bg-light">
+
         {/* Logo */}
         <a class="navbar-brand" href="/dashboard">
           <img
@@ -30,6 +31,7 @@ const NaviBar = ({ loggedIn }) => {
             </>
           )}
         </div>
+
       </nav>
     </div>
   );
