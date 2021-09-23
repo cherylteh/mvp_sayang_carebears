@@ -3,7 +3,14 @@ import { Link } from "react-router-dom";
 
 const NaviBar = () => {
   return (
-    <div>
+    <div class="container">
+      <nav class="navbar fixed-top navbar-light bg-light">
+        
+        {/* Logo */}
+        <a class = "navbar-brand" href="#">
+          <img src="https://i.postimg.cc/PqZHRJpB/Logo-SAYANG-2.png" height="50" alt="Sayang Logo"></img>
+        </a>
+      
       <ul className="nav justify-content-end">
         <li className="nav-item">
           <span className="nav-link">
@@ -35,6 +42,7 @@ const NaviBar = () => {
           </span>
         </li>
       </ul>
+      </nav>
     </div>
   );
 };

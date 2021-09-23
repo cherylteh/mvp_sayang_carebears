@@ -34,14 +34,14 @@ export default function MedInfo() {
       })
       .catch((error) => {
         console.log(
-          "This drug may not be FDA-approved and not in our database"
+          "This drug may not be FDA-approved and not in the database"
         );
       });
   };
 
   return (
     <div className="card rounded-3 border border-primary bg-light p-4 pt-3">
-      <h3>Search for Drug Info</h3>
+      <h4>Search for Drug Info</h4>
       <i>
         <small className="text-muted">
           Note: This seach is only applicable to USA FDA-approved drugs. For
@@ -49,28 +49,44 @@ export default function MedInfo() {
         </small>
       </i>
       <p>
-        <form onSubmit={handleSubmit}>
+        <form 
+          className="form-floating"
+          onSubmit={handleSubmit}
+        >
+          
           <input
-            class="form-control border border-info mb-2"
+            id="floatingInputValue"
+            className="form-control"
             type="text"
             name="drugSearch"
             value={drugSearch}
-            placeholder="Enter Name of meds here"
+            placeholder="Enter Name of Drug"
             onChange={handleChange}
           />
-          <button className="btn btn-primary" type="submit">
+          <label for="floatingInputValue">Enter Name of Drug</label>
+          
+          <p/><button 
+            className="btn btn-outline-primary rounded-pill btn-block" 
+            type="submit"
+            data-bs-toggle="collapse" 
+            data-bs-target="#drugInfo" 
+            aria-expanded="false" 
+            aria-controls="drugInfo"
+            >
             Submit
           </button>
         </form>
       </p>
 
-      <div>
-        <p>Name of Drug entered: {drugSearch} </p>
-        <p>Generic Name: {drugName}</p>
-        <p>Summary: {summary}</p>
-      </div>
+     {/* DRUG INFO RESULTS  */} 
+      <p/><div class="collapse" id="drugInfo">
+        <div class="card card-body">
+          <b>About {drugSearch}</b>
+          <p><b>Generic Name:</b> {drugName}</p>
+          <p class="lh-sm"><b>Summary:</b> {summary}</p>
+        </div>
 
-      <div>
+        <div>
         <small className="text-muted">
           If the medication you are searching for is not FDA-approved, please
           search using the following websites:
@@ -86,6 +102,7 @@ export default function MedInfo() {
           - <i>UK-based.</i>
         </small>
       </div>
+    </div>
     </div>
   );
 }
