@@ -46,8 +46,8 @@ function App() {
  
   return (
     <div>
-      HELLO and Welcome to Sayang. What would you like to do today? Current
-      Time: {date}
+      <div className="p-5"></div>
+      Current Time: {date}
       {/* <AuthContextProvider value={{ loggedIn, getLoggedIn }}></AuthContextProvider> */}
          {loggedIn === false && (
               <>
