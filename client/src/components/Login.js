@@ -12,16 +12,19 @@ export default function Login() {
       },
       body: JSON.stringify({ username, password }),
     })
+    .then((result) => {
+      return result.json();
+    })
+      
       .then((result) => {
         //store it locally
-        localStorage.setItem("token", result.data.token);
+        localStorage.setItem("token", result.token);
         console.log(
-          result.data.token
+          result.token
         );
       })
       .catch((error) => console.log(error));
   };
-
   /* style = {
     background: `url("https://source.unsplash.com/1600x900/?medical")`,
     backgroundRepeat: "no-repeat",
@@ -30,7 +33,7 @@ export default function Login() {
   } */
   return (
     <div className="login container col-4 rounded-3 border border-primary bg-light bg-opacity-75 bg-gradient p-5 mt-3">
-      <img src = "https://i.postimg.cc/nMf8mcFH/Logo-sayang-sq.jpg"/>
+      <img src = "https://i.postimg.cc/nMf8mcFH/Logo-sayang-sq.jpg" alt="sayang background" />
       <h1>Login</h1>
       <small className="text-muted">Log in with your data that you entered during registration</small>
       <p/>Your Username<input

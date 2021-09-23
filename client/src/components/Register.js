@@ -26,7 +26,7 @@ export default function Register() {
 
   return (
     <div className="registration container col-4 rounded-3 border border-primary bg-light bg-opacity-75 bg-gradient p-5 mt-3">
-      <img src = "https://i.postimg.cc/nMf8mcFH/Logo-sayang-sq.jpg"/>
+      <img src = "https://i.postimg.cc/nMf8mcFH/Logo-sayang-sq.jpg" alt="sayang background" />
       <h1>Create Account</h1>
       <small className="text-muted">Please enter the following below to create an account</small>
 
