@@ -1,47 +1,37 @@
-import React from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
+//import AuthContext from "../context/AuthContext";
 
-const NaviBar = () => {
+const NaviBar = ({ loggedIn }) => {
   return (
     <div class="container">
       <nav class="navbar fixed-top navbar-light bg-light">
-        
+
         {/* Logo */}
-        <a class = "navbar-brand" href="#">
-          <img src="https://i.postimg.cc/PqZHRJpB/Logo-SAYANG-2.png" height="50" alt="Sayang Logo"></img>
+        <a class="navbar-brand" href="/dashboard">
+          <img
+            src="https://i.postimg.cc/PqZHRJpB/Logo-SAYANG-2.png"
+            height="50"
+            alt="Sayang Logo"
+          ></img>
         </a>
-      
-      <ul className="nav justify-content-end">
-        <li className="nav-item">
-          <span className="nav-link">
-            <Link to="/register">Register</Link>
-          </span>
-        </li>
-        
-        <li className="nav-item">
-          <span className="nav-link">
-            <Link to="/login">Login</Link>
-          </span>
-        </li>
-        
-        <li className="nav-item">
-          <span className="nav-link">
-            <Link to="/dashboard">Dashboard</Link>
-          </span>
-        </li>
-        
-        <li className="nav-item">
-          <span className="nav-link">
-            <Link to="/medsup">Medication & Supplements</Link>
-          </span>
-        </li>
-        
-        <li className="nav-item">
-          <span className="nav-link">
-            <Link to="/contact">Contacts List</Link>
-          </span>
-        </li>
-      </ul>
+
+        <div className="nav justify-content-end">
+          {loggedIn === false && (
+            <>
+              <Link className="nav-item nav-link" to="/register">Register</Link>
+              <Link className="nav-item nav-link" to="/login">Login</Link>
+            </>
+          )}
+          {loggedIn === true && (
+            <>
+              <Link className="nav-item nav-link" to="/dashboard">Dashboard</Link>
+              <Link className="nav-item nav-link" to="/medsup">Medication & Supplements</Link>
+              <Link className="nav-item nav-link" to="/contact">Contacts List</Link>
+            </>
+          )}
+        </div>
+
       </nav>
     </div>
   );

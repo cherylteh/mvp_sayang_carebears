@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import "./App.css";
 
 import NaviBar from "./components/NaviBar";
@@ -7,63 +7,70 @@ import Login from "./components/Login";
 import Dashboard from "./components/Dashboard";
 import MedSup from "./components/MedSup";
 import Contact from "./components/Contact";
+import AuthContext, { AuthContextProvider } from "./context/AuthContext";
 
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  NavLink
+  NavLink,
 } from "react-router-dom";
 
-
 function App() {
+  const date = Date().toLocaleString();
+  //const { loggedIn } = useContext(AuthContext);
+  const [loggedIn, setLoggedIn] = useState(undefined);
 
-  const date = Date().toLocaleString()
+  const getLoggedIn = () => {
+    fetch("/users/loggedIn", {
+      method: "GET",
+      headers: {
+        "x-access-token": localStorage.getItem("token"),
+      },
+    })
+    .then((result) => {
+      return result.json();
+    })
+      .then((result) => {
+        //store it locally
+        console.log(result);
+        setLoggedIn(result.status);
+        console.log(`check boolean: ${result.status} should be true or false`);
+      })
+      .catch((error) => console.log(error));
+  };
 
+  useEffect(() => {
+    getLoggedIn();
+  }, []);
+ 
   return (
     <div>
-      HELLO and Welcome to Sayang. What would you like to do today?
+      <div className="p-5"></div>
       Current Time: {date}
-      <Router>
-        <NaviBar />
-        <Switch>
-          <Route
-            exact
-            path="/register"
-            render={() => (<Register />)}
-          />
-          <Route
-            exact
-            path="/Login"
-            render={() => (
-              <Login/>
+      {/* <AuthContextProvider value={{ loggedIn, getLoggedIn }}></AuthContextProvider> */}
+         {loggedIn === false && (
+              <>
+                {/* <Route exact path="/register" render={() => <Register />} /> */}
+                <Register/>
+                <Login />
+              </>
             )}
-          />
-          <Route
-            exact
-            path="/dashboard"
-            render={() => (
-              <Dashboard/>
+            <Router>
+          <NaviBar loggedIn={loggedIn} />
+          <Switch>
+           
+            {loggedIn === true && (
+              <>
+                <Route exact path="/dashboard" render={() => <Dashboard />} />
+                <Route exact path="/MedSup" render={() => <MedSup />} />
+                <Route exact path="/Contact" render={() => <Contact />} />
+              </>
             )}
-          />
-          <Route
-            exact
-            path="/MedSup"
-            render={() => (
-              <MedSup/>
-            )}
-          />
-          <Route
-            exact
-            path="/Contact"
-            render={() => (
-              <Contact/>
-            )}
-          />
-        </Switch>
-      </Router>
+          </Switch>
+        </Router>
+      
     </div>
-
   );
 }
 
