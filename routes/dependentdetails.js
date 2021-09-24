@@ -18,6 +18,7 @@ const getDependentwithMeds = (req, res) => {
       .catch(err => res.status(500).send(err));
   };
 
+  // GET ALL Dependents JOIN Meds table
   router.get('/', function(req, res, next) {
     db(`SELECT dependent.dep_name, medsup.medName, medsup.medCondition, medsup.dosage, medsup.frequency FROM dependent, medsup WHERE dependent.depID=medsup.depID;`)
       .then(results => {
@@ -36,7 +37,7 @@ router.get('/:id', function(req, res, next) {
 
 // GET Dependent by ID - e.g. localhost:5000/dependent/1 - WORKING
 router.get("/dependent:id", function(req, res, next) {
-  db(`SELECT * FROM dependent WHERE depID=${req.params.id};`)
+  db(`SELECT dependent.dep_name, medsup.medName, medsup.medCondition, medsup.dosage, medsup.frequency FROM dependent, medsup WHERE dependent.depID&medsup.depID=${req.params.id};`)
     .then(results => {
       console.log(results.data);
       res.send(results.data[0]);

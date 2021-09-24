@@ -94,6 +94,7 @@ export default function Dependent() {
 
   return (
     <div>
+
       <h4>Dependents name: </h4>
       <div className="card rounded-3 border border-primary bg-light p-4">{depMedsup.map((medsup) => {
           return (
@@ -107,6 +108,7 @@ export default function Dependent() {
               </div>
           );
         })}
+
         <h4>Dependents List</h4>
         <small className="text-muted">Click on names to view records</small>
         
@@ -135,11 +137,10 @@ export default function Dependent() {
             />
           </div>
 
-          <p>medSup component here</p>
           {/* onSubmit is in form tag */}
           <button
             onClick={(e) => handleSubmit(e)}
-            className="btn btn-outline-primary rounded-pill btn-block"
+            className="btn btn-outline-info rounded-pill btn-block"
             type="submit"
             value="submit"
           >

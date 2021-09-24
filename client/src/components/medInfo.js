@@ -40,14 +40,13 @@ export default function MedInfo() {
   };
 
   return (
-    <div className="card rounded-3 border border-primary bg-light p-4 pt-3">
-      <h4>Search for Drug Info</h4>
-      <i>
-        <small className="text-muted">
-          Note: This seach is only applicable to USA FDA-approved drugs. For
-          best results, please enter the generic name (vs brand name)
-        </small>
-      </i>
+    <div className="mb-3 container rounded-3 border border-info bg-light p-4 mt-3">
+      <h4><img src="https://i.postimg.cc/bwqCMkBM/Sayang-Search.png" width="30"></img> Search for Drug Info</h4>
+          <small className="text-muted">
+            Note: This seach is only applicable to USA FDA-approved drugs. For
+            best results, please enter the generic name (vs brand name)
+          </small>
+
       <p>
         <form 
           className="form-floating"
@@ -66,7 +65,7 @@ export default function MedInfo() {
           <label for="floatingInputValue">Enter Name of Drug</label>
           
           <p/><button 
-            className="btn btn-outline-primary rounded-pill btn-block" 
+            className="btn btn-outline-info rounded-pill btn-block" 
             type="submit"
             data-bs-toggle="collapse" 
             data-bs-target="#drugInfo" 
@@ -81,9 +80,9 @@ export default function MedInfo() {
      {/* DRUG INFO RESULTS  */} 
       <p/><div class="collapse" id="drugInfo">
         <div class="card card-body">
-          <b>About {drugSearch}</b>
-          <p><b>Generic Name:</b> {drugName}</p>
-          <p class="lh-sm"><b>Summary:</b> {summary}</p>
+          <h5>About {drugSearch}</h5>
+          <h6>Generic Name: {drugName}</h6>
+          <p class="lh-sm"><h6>Summary:</h6> {summary}</p>
         </div>
 
         <div>

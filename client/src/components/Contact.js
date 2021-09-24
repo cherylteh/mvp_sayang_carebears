@@ -82,28 +82,40 @@ export default function Contact(props) {
   };
 
   return (
-    <div className="mb-3 container rounded-3 border border-primary bg-light p-4 mt-3">
-      <h5>Central Contact List</h5>
+    <div className="mb-3 container rounded-3 border border-info bg-light p-4 mt-3">
+      
+      {/* START OF LIST  */} 
+      <h4>Frequent Contact List</h4>
+      
+      <div class="list group">
+        
+     {/*  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start active"> */}
         {contact.map((item) => {
           return (
-            <ul key={item.contactID}>
-              <li>Name: {item.contactName}</li>
-              <li>Contact: {item.telNo}</li>
-               <li>Relationship: {item.relationship}</li>
-            </ul>
+            <a href="#" class="list-group-item list-group-item-action row">
+              {/* <div class="d-flex w-35 justify-content-between"> */}
+                <ul key={item.contactID}>
+                <h5 class="mb-1"><img src="https://i.postimg.cc/0rRgmFtB/Ssyang-Contact.png" height="25"></img> {item.contactName} ({item.relationship})</h5>
+                <p class="mb-1">Contact: {item.telNo}</p>
+              </ul>
+             {/*  </div> */}
+            </a>
           );
         })}
-          
-      <p/>
-        <button 
-          class="btn btn-outline-primary btn-sm rounded-pill btn-bloc" 
-          type="button" 
-          data-bs-toggle="collapse" 
-          data-bs-target="#addNewContact" 
-          aria-expanded="false" 
-          aria-controls="addNewContact">
+      {/* </a> */}
+    
+      </div>
+    
+     <p/>    
+      <button
+        class="btn btn-outline-info btn-sm rounded-pill btn-bloc"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#addNewContact"
+        aria-expanded="false"
+        aria-controls="addNewContact">
           + New Contact
-        </button>
+      </button>
     
         
         {/* ADD FORM  */} 
@@ -153,7 +165,7 @@ export default function Contact(props) {
 
                 <button
                   onClick={(e) => handleSubmit(e)}
-                  className="btn btn-outline-primary rounded-pill btn-block"
+                  className="btn btn-outline-info rounded-pill btn-block"
                   type="submit"
                   value="submit"
                 >
@@ -164,7 +176,7 @@ export default function Contact(props) {
         </div>
         </div>
         {/* End of ADD FORM  */} 
-        </div>
+    </div>
          
   );
 }
