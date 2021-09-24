@@ -6,11 +6,13 @@ import MedInfo from "./medInfo";
 const Dashboard = () => {
 
   return (
-    <div>
+    <div className="container">
       HELLO and Welcome to Sayang. What would you like to do today?
+      <div className="row">
           <div className="col"><Dependent /></div> 
           <div className="col"><Contact /></div>
           <div className="col"><MedInfo /></div> 
+          </div>
     </div>
   );
 };

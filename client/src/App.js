@@ -16,6 +16,7 @@ import {
   Route,
   NavLink,
 } from "react-router-dom";
+import MedInfo from "./components/medInfo";
 
 function App() {
   const date = Date().toLocaleString();
@@ -54,15 +55,18 @@ function App() {
           {loggedIn === false && (
             <>
               <Route exact path="/" component={() => <Login />} />
+              <Route exact path="/login" component={() => <Login />} />
               <Route exact path="/register" component={() => <Register />} />
             </>
           )}
           {loggedIn === true && (
             <>
               <Route exact path="/" component={() => <Dashboard />} />
+              <Route exact path="/Dashboard" component={() => <Dashboard />} />
               <Route exact path="/Dependent" component={() => <Dependent />} />
               <Route exact path="/MedSup" component={() => <MedSup />} />
               <Route exact path="/Contact" component={() => <Contact />} />
+              <Route exact path="/MedInfo" component={() => <MedInfo />} />
             </>
           )}
         </Switch>
