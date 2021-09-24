@@ -32,7 +32,7 @@ export default function Login() {
     backgroundSize: "auto",
   } */
   return (
-    <div className="login container col-4 rounded-3 border border-primary bg-light bg-opacity-75 bg-gradient p-5 mt-3">
+    <div className="login container col-4 rounded-3 border border-info bg-light bg-opacity-75 bg-gradient p-5 mt-3">
       <img src = "https://i.postimg.cc/nMf8mcFH/Logo-sayang-sq.jpg" alt="sayang background" />
       <h1>Login</h1>
       <small className="text-muted">Log in with your data that you entered during registration</small>
@@ -54,7 +54,7 @@ export default function Login() {
           setPassword(e.target.value);
         }}
       />
-      <p/><button className="btn btn-primary rounded-pill" onClick={login}>
+      <p/><button className="btn btn-info rounded-pill" onClick={login}>
         Login
       </button>
 

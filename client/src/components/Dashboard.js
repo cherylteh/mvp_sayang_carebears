@@ -5,7 +5,7 @@ import MedInfo from "./medInfo";
 
 const Dashboard = () => {
   return (
-    <div>
+    <div classname="row">
       HELLO and Welcome to Sayang. What would you like to do today?
           <div className="col"><Dependent /></div> 
           <div className="col"><Contact /></div>

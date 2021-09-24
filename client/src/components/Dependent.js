@@ -80,7 +80,7 @@ export default function Dependent(props) {
 
   return (
     <div>
-      <div className="card rounded-3 border border-primary bg-light p-4">
+      <div className="card rounded-3 border border-info bg-light p-4">
         <h4>Dependents List</h4>
         <small className="text-muted">Click on names to view records</small>
         {dependent.map((item) => {
@@ -115,7 +115,7 @@ export default function Dependent(props) {
           {/* onSubmit is in form tag */}
           <button
             onClick={(e) => handleSubmit(e)}
-            className="btn btn-outline-primary rounded-pill btn-block"
+            className="btn btn-outline-info rounded-pill btn-block"
             type="submit"
             value="submit"
           >
