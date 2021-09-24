@@ -9,7 +9,7 @@ const dependentRouter = require('./routes/dependent');
 const medsupRouter = require('./routes/medsup');
 const contactRouter = require('./routes/contact');
 const usersRouter = require('./routes/users');
-const dependentdetailsRouter = require('./routes');
+const dependentdetailsRouter = require('./routes/dependentdetails');
 
 
 const app = express();
@@ -25,7 +25,7 @@ app.use('/dependent', dependentRouter);
 app.use('/medsup', medsupRouter);
 app.use('/contact', contactRouter);
 app.use('/users', usersRouter);
-app.use('/', dependentdetailsRouter);
+app.use('/details', dependentdetailsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

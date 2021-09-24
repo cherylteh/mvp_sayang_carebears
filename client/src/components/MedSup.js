@@ -85,7 +85,7 @@ export default function MedSup(props) {
     <div class="container">
       <div className="row align-items-start">
         <div class="col">{/* ADD FORM  */}   
-        <div className="mb-3 container rounded-3 border border-primary bg-light p-4 mt-3">
+        <div className="mb-3 container rounded-3 border border-info bg-light p-4 mt-3">
           <h5>Add New Medication / Supplement</h5>
             <small className="text-muted">Enter Medication and Supplements here</small>
 
@@ -195,7 +195,7 @@ export default function MedSup(props) {
                 </div>
 
                   <button onClick ={(e) => handleSubmit(e)}
-                      className="btn btn-outline-primary rounded-pill btn-block"
+                      className="btn btn-outline-info rounded-pill btn-block"
                       type="submit"
                       value="submit"
                   >Submit
@@ -206,7 +206,7 @@ export default function MedSup(props) {
           </div>
     
         <div class="col">{/* MEDICATION LIST */}
-        <div className="mb-3 container rounded-3 border border-primary bg-light p-4 mt-3">
+        <div className="mb-3 container rounded-3 border border-info bg-light p-4 mt-3">
           <h5>Medication & Supplement</h5>
             {medsup.map(item => {
               return (

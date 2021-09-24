@@ -35,15 +35,13 @@ export default function Login() {
     backgroundSize: "auto",
   } */
   return (
-    <div className="login container col-4 rounded-3 border border-primary bg-light bg-opacity-75 bg-gradient p-5 mt-3">
-      <img
-        src="https://i.postimg.cc/nMf8mcFH/Logo-sayang-sq.jpg"
-        alt="sayang background"
-      />
+
+    <div className="login container col-4 rounded-3 border border-info bg-light bg-opacity-75 bg-gradient p-5 mt-3">
+      <img src = "https://i.postimg.cc/nMf8mcFH/Logo-sayang-sq.jpg" alt="sayang background" />
+    
       <h1>Login</h1>
-      <small className="text-muted">
-        Log in with your data that you entered during registration
-      </small>
+      <small className="text-muted">Log in with your data that you entered during registration</small>
+      
       <form onSubmit={login}>
         <p />
         <label className="form-label">
@@ -76,6 +74,7 @@ export default function Login() {
           Login
         </button>
       </form>
+
       <p />
       <small className="text-muted">
         Don't have an account?{" "}
