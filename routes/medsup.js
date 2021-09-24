@@ -9,11 +9,23 @@ const getAllMedSup = (req, res) => {
     })
     .catch(err => console.log(err));
 };
-
+/* 
 //GET All MEDS and SUP (by Dependent ID)
 router.get('/dep/:depID', function(req, res, next) {
   //res.send('respond with a resource');
+  //SELECT dependent.dep_name, medsup.medName, medsup.medCondition, medsup.dosage, medsup.frequency FROM dependent, medsup WHERE dependent.depID=medsup.depID;
   db(`SELECT * FROM medsup WHERE depID=${req.params.depID};`)
+    .then(results => {
+      res.send(results.data);
+    })
+    .catch(err => res.status(500).send(err));
+});
+ */
+//GET All MEDS and SUP (by Dependent ID)
+router.get('/dep/:depID', function(req, res, next) {
+  //res.send('respond with a resource');
+  //
+  db(`SELECT dependent.dep_name, medsup.medName, medsup.medCondition, medsup.dosage, medsup.frequency FROM dependent, medsup WHERE dependent.depID=${req.params.depID}`)
     .then(results => {
       res.send(results.data);
     })

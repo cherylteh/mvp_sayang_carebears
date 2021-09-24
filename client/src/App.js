@@ -5,6 +5,7 @@ import NaviBar from "./components/NaviBar";
 import Register from "./components/Register";
 import Login from "./components/Login";
 import Dashboard from "./components/Dashboard";
+import Dependent from "./components/Dependent";
 import MedSup from "./components/MedSup";
 import Contact from "./components/Contact";
 import AuthContext, { AuthContextProvider } from "./context/AuthContext";
@@ -59,6 +60,7 @@ function App() {
           {loggedIn === true && (
             <>
               <Route exact path="/" component={() => <Dashboard />} />
+              <Route exact path="/Dependent" component={() => <Dependent />} />
               <Route exact path="/MedSup" component={() => <MedSup />} />
               <Route exact path="/Contact" component={() => <Contact />} />
             </>

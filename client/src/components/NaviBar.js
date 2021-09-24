@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const NaviBar = ({ loggedIn }) => {
 
@@ -26,6 +26,9 @@ const NaviBar = ({ loggedIn }) => {
             <>
               <Link className="nav-item nav-link" to="/">
                 Dashboard
+              </Link>
+              <Link className="nav-item nav-link" to="/dependant">
+                Dependent
               </Link>
               <Link className="nav-item nav-link" to="/medsup">
                 Medication & Supplements
