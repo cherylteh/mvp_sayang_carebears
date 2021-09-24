@@ -23,6 +23,8 @@ router.post("/register", async (req, res) => {
   }
 });
 
+
+
 router.post("/login", async (req, res) => {
   const { username, password } = req.body;
   try {
@@ -35,7 +37,8 @@ router.post("/login", async (req, res) => {
       const correctPassword = await bcrypt.compare(password, user.password);
       if (!correctPassword) throw new Error("Incorrect password");
       let token = jwt.sign({ user_id }, supersecret);
-      res.send({ message: "Login successful, here is your token", token });
+      res.send({ message: "Login successful, here is your token", token })
+      .then();
     } else {
       throw new Error("User does not exist");
     }
