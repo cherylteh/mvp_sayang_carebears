@@ -18,7 +18,6 @@ import {
 
 function App() {
   const date = Date().toLocaleString();
-  //const { loggedIn } = useContext(AuthContext);
   const [loggedIn, setLoggedIn] = useState(undefined);
 
   const getLoggedIn = () => {
@@ -28,9 +27,9 @@ function App() {
         "x-access-token": localStorage.getItem("token"),
       },
     })
-    .then((result) => {
-      return result.json();
-    })
+      .then((result) => {
+        return result.json();
+      })
       .then((result) => {
         //store it locally
         console.log(result);
@@ -43,33 +42,29 @@ function App() {
   useEffect(() => {
     getLoggedIn();
   }, []);
- 
+
   return (
     <div>
       <div className="p-5"></div>
-      Current Time: {date}
-      {/* <AuthContextProvider value={{ loggedIn, getLoggedIn }}></AuthContextProvider> */}
-         {loggedIn === false && (
-              <>
-                {/* <Route exact path="/register" render={() => <Register />} /> */}
-                <Register/>
-                <Login />
-              </>
-            )}
-            <Router>
-          <NaviBar loggedIn={loggedIn} />
-          <Switch>
-           
-            {loggedIn === true && (
-              <>
-                <Route exact path="/dashboard" render={() => <Dashboard />} />
-                <Route exact path="/MedSup" render={() => <MedSup />} />
-                <Route exact path="/Contact" render={() => <Contact />} />
-              </>
-            )}
-          </Switch>
-        </Router>
-      
+      <span className="nav justify-content-end">Current Time: {date}</span>
+      <Router>
+        <NaviBar loggedIn={loggedIn} />
+        <Switch>
+          {loggedIn === false && (
+            <>
+              <Route exact path="/" component={() => <Login />} />
+              <Route exact path="/register" component={() => <Register />} />
+            </>
+          )}
+          {loggedIn === true && (
+            <>
+              <Route exact path="/" component={() => <Dashboard />} />
+              <Route exact path="/MedSup" component={() => <MedSup />} />
+              <Route exact path="/Contact" component={() => <Contact />} />
+            </>
+          )}
+        </Switch>
+      </Router>
     </div>
   );
 }
