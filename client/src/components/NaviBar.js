@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const NaviBar = ({ loggedIn }) => {
 
@@ -16,7 +16,7 @@ const NaviBar = ({ loggedIn }) => {
           {/* Logo */}
           <a class="navbar-brand" href="/dashboard">
             <img
-              src="https://i.postimg.cc/PqZHRJpB/Logo-SAYANG-2.png"
+              src="https://i.postimg.cc/sDLhJjr8/logo-sayang-space-hor.png"
               height="50"
               alt="Sayang Logo"
             ></img>
@@ -27,11 +27,17 @@ const NaviBar = ({ loggedIn }) => {
               <Link className="nav-item nav-link" to="/">
                 Dashboard
               </Link>
+              <Link className="nav-item nav-link" to="/dependent">
+                Dependent
+              </Link>
               <Link className="nav-item nav-link" to="/medsup">
                 Medication & Supplements
               </Link>
               <Link className="nav-item nav-link" to="/contact">
                 Contacts List
+              </Link>
+              <Link className="nav-item nav-link" to="/medinfo">
+                Search Drug Info
               </Link>
               <button className="nav-item nav-link" onClick={logout}>
                 Logout

@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const history = useHistory();
 
   const login = (e) => {
     e.preventDefault();
@@ -23,7 +22,7 @@ export default function Login() {
       .then((result) => {
         localStorage.setItem("token", result.token);
         //console.log(result.token);
-        window.location.reload();
+        window.location.reload("/");
       })
       .catch((error) => console.log(error));
       

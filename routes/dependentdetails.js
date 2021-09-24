@@ -18,9 +18,17 @@ const getDependentwithMeds = (req, res) => {
       .catch(err => res.status(500).send(err));
   };
 
-// GET ALL Dependents JOIN Meds table
-router.get('/', function(req, res, next) {
-  db("SELECT dependent.dep_name, medsup.medName, medsup.medCondition, medsup.dosage, medsup.frequency FROM dependent, medsup WHERE dependent.depID=medsup.depID;")
+  // GET ALL Dependents JOIN Meds table
+  router.get('/', function(req, res, next) {
+    db(`SELECT dependent.dep_name, medsup.medName, medsup.medCondition, medsup.dosage, medsup.frequency FROM dependent, medsup WHERE dependent.depID=medsup.depID;`)
+      .then(results => {
+        res.send(results.data);
+      })
+      .catch(err => res.status(500).send(err));
+  });
+// GET ALL Dependents - e.g. localhost:5000/dependent - WORKING
+router.get('/:id', function(req, res, next) {
+  db(`SELECT dependent.dep_name, medsup.medName, medsup.medCondition, medsup.dosage, medsup.frequency FROM dependent, medsup WHERE dependent.depID=${req.params.id} AND medsup.depID=${req.params.id};`)
     .then(results => {
       res.send(results.data);
     })

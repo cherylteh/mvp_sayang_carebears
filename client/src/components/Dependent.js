@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 
-export default function Dependent(props) {
+export default function Dependent() {
   let [dependent, setDependent] = useState([]);
+  let [depMedsup, setDepMedSup] = useState([]);
   let [input, setInput] = useState({});
 
   useEffect(() => {
@@ -18,6 +19,19 @@ export default function Dependent(props) {
       .catch((error) => {
         console.log("Error in getDependent");
       });
+  };
+
+  
+  const getDepMedSup = (id) => {
+    fetch(`/details/${id}`)
+        .then(response => response.json())
+        .then(medsup => {
+            console.log(medsup);
+            setDepMedSup(medsup);
+        })
+        .catch(error => {
+            console.log("Error in medsup");
+        });
   };
 
   const handleChange = (e) => {
@@ -80,17 +94,29 @@ export default function Dependent(props) {
 
   return (
     <div>
-      <div className="card rounded-3 border border-info bg-light p-4">
+
+      <h4>Dependents name: </h4>
+      <div className="card rounded-3 border border-primary bg-light p-4">{depMedsup.map((medsup) => {
+          return (
+              <div key={medsup.medID}>
+              <p>Dependent Name: {medsup.dep_name}</p>
+              <p>Name: {medsup.medName}</p>
+              <p>Type: {medsup.medType}</p>
+              <p>Condition: {medsup.medCondition}</p>
+              <p>Dosage: {medsup.dosage}</p>
+              <p>Frequency: {medsup.frequency}</p>
+              </div>
+          );
+        })}
+
         <h4>Dependents List</h4>
         <small className="text-muted">Click on names to view records</small>
+        
         {dependent.map((item) => {
           return (
-            <ul>
-              <li key={item.depID}>
-                {" "}
-                Name: {item.dep_name} (depID:{item.depID}){" "}
-              </li>
-            </ul>
+              <div key={item.depID} onClick={() => {getDepMedSup(item.depID);}}>
+                Name: {item.dep_name} (depID:{item.depID})
+              </div>
           );
         })}
 
@@ -111,7 +137,6 @@ export default function Dependent(props) {
             />
           </div>
 
-          <p>medSup component here</p>
           {/* onSubmit is in form tag */}
           <button
             onClick={(e) => handleSubmit(e)}
