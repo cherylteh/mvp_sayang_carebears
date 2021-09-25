@@ -109,45 +109,73 @@ export default function Dependent() {
           );
         })}
 
-        <h4>Dependents List</h4>
-        <small className="text-muted">Click on names to view records</small>
+      {/* START OF DEPENDENT NAME LIST */} 
+      <h4>Dependents List</h4>
+        <small className="text-muted">Click on the name to view details</small>
         
+        <div class="list group"></div>
         {dependent.map((item) => {
           return (
-              <div key={item.depID} onClick={() => {getDepMedSup(item.depID);}}>
-                Name: {item.dep_name} (depID:{item.depID})
-              </div>
+            <a href="#" class="list-group-item list-group-item-action row">
+              <ul key={item.depID} onClick={() => {getDepMedSup(item.depID);}}>
+              {item.dep_name} (ID:{item.depID})
+              </ul>
+            </a>
           );
         })}
+        </div>
+      {/* END OF DEPENDENT NAME LIST */} 
+        
+      <p/>    
+ 
+      {/* ADD NEW DEPENDENT BUTTON */} 
+        <button
+          class="btn btn-outline-info btn-sm rounded-pill btn-bloc"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#addNewDependent"
+          aria-expanded="false"
+          aria-controls="addNewDependent">
+          + New Dependent
+        </button>
+      {/* END OF BUTTON */} 
+        
+      <p/>
+      {/* ADD NEW DEPENDENT FORM  */} 
+      <div class="collapse" id="addNewDependent">
+        <div class="card card-body">
 
         <h4>Add New Dependant</h4>
-        <form>
-          <small className="text-muted">
-            Enter your dependent details here
-          </small>
-          <div className="form-group">
-            <label for="dependentName">Name</label>
-            <input
-              id="dependentName"
+          <small className="text-muted">Enter your dependent details here</small>
+          
+          <p/><div className="form-group">
+            <form className="form-floating">
+
+            <div class="form-floating m-3">
+              <input
+              id="floatingInputValue"
               type="text"
               className="form-control"
               placeholder="Enter Dependent Name"
               name="dep_name"
               onChange={(e) => handleChange(e)}
             />
+            <label for="floatingInputValue">Name</label>
+            </div>
+  
+            <button
+              onClick={(e) => handleSubmit(e)}
+              className="btn btn-outline-info rounded-pill btn-block"
+              type="submit"
+              value="submit"
+            >Submit Dependent
+            </button>
+            </form>
           </div>
-
-          {/* onSubmit is in form tag */}
-          <button
-            onClick={(e) => handleSubmit(e)}
-            className="btn btn-outline-info rounded-pill btn-block"
-            type="submit"
-            value="submit"
-          >
-            Submit Dependent
-          </button>
-        </form>
+        </div>
       </div>
+      {/* END OF ADD NEW DEPENDENT FORM  */} 
+
     </div>
   );
 }

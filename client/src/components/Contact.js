@@ -121,6 +121,7 @@ export default function Contact(props) {
         {/* ADD FORM  */} 
        <p/><div class="collapse" id="addNewContact">
         <div class="card card-body">
+          
           <h5>Add New Contact</h5>
             <small className="text-muted">Enter Frequent Contacts here</small>
         

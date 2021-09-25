@@ -84,7 +84,9 @@ export default function MedSup(props) {
   return (
     <div class="container">
       <div className="row align-items-start">
-        <div class="col">{/* ADD FORM  */}   
+
+      {/* ADD FORM  */}   
+        <div class="col">
         <div className="mb-3 container rounded-3 border border-info bg-light p-4 mt-3">
           <h5>Add New Medication / Supplement</h5>
             <small className="text-muted">Enter Medication and Supplements here</small>
@@ -92,136 +94,151 @@ export default function MedSup(props) {
             <p/><div className="form-group">
               <form className="form-floating">
 
-                <div class="form-floating m-3">
-                  <input
-                    type="int"
-                    className="form-control"
-                    id="floatingInputValue"
-                    placeholder="Enter Dependent ID"
-                    name="depID"
-                    onChange={(e) => handleChange(e)}
-                  />
-                  <label for="floatingInputValue">Enter Dependent ID</label>
-                </div>
+              {/* Dependent ID  */}   
+              <div class="form-floating m-3">
+                <input
+                  type="int"
+                  className="form-control"
+                  id="floatingInputValue"
+                  placeholder="Enter Dependent ID"
+                  name="depID"
+                  onChange={(e) => handleChange(e)}
+                />
+                <label for="floatingInputValue">Enter Dependent ID</label>
+              </div>
      
-                <div class="form-floating m-3">
-                  <input
-                    className="form-control"
-                    id="floatingInputValue"
-                    type="text"                   
-                    placeholder="Enter Meds/Supplement Name"
-                    name="medName"
-                    onChange={(e) => handleChange(e)}
-                  />
-                  <label for="floatingInputValue">Meds / Supplement Name</label>
-                </div>
+              {/* Med/Supplement Name */}  
+              <div class="form-floating m-3">
+                <input
+                  className="form-control"
+                  id="floatingInputValue"
+                  type="text"                   
+                  placeholder="Enter Meds/Supplement Name"
+                  name="medName"
+                  onChange={(e) => handleChange(e)}
+                />
+                <label for="floatingInputValue">Meds / Supplement Name</label>
+              </div>
 
-                <div class="form-floating m-3">
-                  <input
-                    className="form-control"
-                    id="floatingInputValue"
-                    list="types"
-                    type="text"        
-                    placeholder="Select Medication or Supplement from dropdown"
-                    name="medType"
-                    onChange={(e) => handleChange(e)}
-                  />
-                  <label for="floatingInputValue">Medication or Supplement?</label>
+              {/* Med or Supplement  */}  
+              <div class="form-floating m-3">
+                <input
+                  className="form-control"
+                  id="floatingInputValue"
+                  list="types"
+                  type="text"        
+                  placeholder="Select Medication or Supplement from dropdown"
+                  name="medType"
+                  onChange={(e) => handleChange(e)}
+                />
+                <label for="floatingInputValue">Medication or Supplement?</label>
 
-                  <datalist id="types">
-                    <option value="Medication"></option>
-                    <option value="Supplements"></option>
-                  </datalist>
-                </div>
+                <datalist id="types">
+                  <option value="Medication"></option>
+                  <option value="Supplements"></option>
+                </datalist>
+              </div>
 
-                <div class="form-floating m-3">
-                  <textarea
-                    className="form-control"
-                    id="floatingInputValue"
-                    style={{height: "100px"}}
-                    type="text"
-                    rows="3"
-                    placeholder="What condition is this meds/supplement for?"
-                    name="medCondition"
-                    onChange={(e) => handleChange(e)}
-                  />
-                  <label for="floatingInputValue">Condition</label>
-                </div>
+              {/* Condition  */}  
+              <div class="form-floating m-3">
+                <textarea
+                  className="form-control"
+                  id="floatingInputValue"
+                  style={{height: "100px"}}
+                  type="text"
+                  rows="3"
+                  placeholder="What condition is this meds/supplement for?"
+                  name="medCondition"
+                  onChange={(e) => handleChange(e)}
+                />
+                <label for="floatingInputValue">Condition</label>
+              </div>
 
-                <div class="row">
-                  <div class="col">
-                    <div class="form-floating m-3">
-                      <input
-                        type="text"
-                        className="form-control"
-                        id="floatingTextarea"
-                        list="dosages"
-                        placeholder="Select dosage"
-                        name="dosage"
-                        onChange={(e) => handleChange(e)}
-                      />
-                      <label for= "floatingTextarea" >Dosage</label>
+              <div class="row">
+                {/* Dosage  */} 
+                <div class="col">
+                  
+                  <div class="form-floating m-3">
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="floatingTextarea"
+                      list="dosages"
+                      placeholder="Select dosage"
+                      name="dosage"
+                      onChange={(e) => handleChange(e)}
+                    />
+                    <label for= "floatingTextarea" >Dosage</label>
 
-                      <datalist id="dosages">
-                        <option value="1"></option>
-                        <option value="2"></option>
-                        <option value="3"></option>
-                        <option value="4"></option>
-                      </datalist>
-                    </div>
-                  </div>
-
-                  <div class="col">  
-                    <div class="form-floating m-3">
-                      <input
-                        className="form-control"
-                        id="floatingInputValue"
-                        list="frequent"
-                        type="text"
-                        placeholder="Select Frequency of dosage"
-                        name="frequency"
-                        onChange={(e) => handleChange(e)}
-                      />
-                      <label for="floatingInputValue">Frequency</label>
-
-                      <datalist id="frequent">
-                        <option value="1 time/day"></option>
-                        <option value="2 times/day"></option>
-                        <option value="3 times/day"></option>
-                        <option value="As required"></option>
-                      </datalist>
-                    </div>
+                    <datalist id="dosages">
+                      <option value="1"></option>
+                      <option value="2"></option>
+                      <option value="3"></option>
+                      <option value="4"></option>
+                    </datalist>
                   </div>
                 </div>
 
-                  <button onClick ={(e) => handleSubmit(e)}
-                      className="btn btn-outline-info rounded-pill btn-block"
-                      type="submit"
-                      value="submit"
-                  >Submit
-                  </button>
-                </form>
-            </div>
-          </div>
-          </div>
+                {/* Frequency  */}  
+                <div class="col">  
+                  <div class="form-floating m-3">
+                    <input
+                      className="form-control"
+                      id="floatingInputValue"
+                      list="frequent"
+                      type="text"
+                      placeholder="Select Frequency of dosage"
+                      name="frequency"
+                      onChange={(e) => handleChange(e)}
+                    />
+                    <label for="floatingInputValue">Frequency</label>
+
+                    <datalist id="frequent">
+                      <option value="1 time/day"></option>
+                      <option value="2 times/day"></option>
+                      <option value="3 times/day"></option>
+                      <option value="As required"></option>
+                    </datalist>
+                  </div>
+                </div>
+                {/* End of Last Row  */} 
+              </div>
+
+              {/* Submit Button  */} 
+              <button 
+                onClick ={(e) => handleSubmit(e)}
+                className="btn btn-outline-info rounded-pill btn-block"
+                type="submit"
+                value="submit"
+              >Submit
+              </button>
+
+              </form>{/* End of Form  */} 
+            </div>{/* End of Form Group  */} 
+        </div>{/* End of ClassName  */} 
+        </div>{/* End of Class  */} 
+        {/* END OF ADD FORM  */} 
     
-        <div class="col">{/* MEDICATION LIST */}
+      {/* MEDICATION LIST */}
+        <div class="col">
         <div className="mb-3 container rounded-3 border border-info bg-light p-4 mt-3">
           <h5>Medication & Supplement</h5>
+          <div class="list group">
             {medsup.map(item => {
               return (
-              <ul key={item.medID}>
-              <li>Dependent ID: {item.depID}</li>
-              <li>Name: {item.medName}</li>
-              <li>Type: {item.medType}</li>
-              <li>Condition: {item.medCondition}</li>
-              <li>Dosage: {item.dosage}</li>
-              <li>Frequency: {item.frequency}</li>
-              </ul> 
+                <a href="#" class="list-group-item list-group-item-action row">
+                  <ul key={item.medID}>
+                    Name: {item.medID} / {item.medName}, {item.medType} for {item.medCondition}
+                    <p/>Dosage: {item.dosage} & Frequency: {item.frequency} for Dep ID{item.depID}
+                  </ul>
+                </a> 
               );
             })}
-        </div>  
-        </div>
+          </div>{/* End of List Group  */} 
+        </div>{/* End of ClassName  */}  
+        </div>{/* End of Class  */} 
+      {/* END OF MEDICATION LIST */}
+
     </div>
     </div>
   );

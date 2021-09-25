@@ -8,7 +8,7 @@ const Dashboard = () => {
   return (
     <div className="container">
 
-      HELLO and Welcome to Sayang. What would you like to do today?
+      <h4>HELLO and Welcome to Sayang. What would you like to do today?</h4>
       <div className="row">
           <div className="col"><Dependent /></div> 
           <div className="col"><Contact /></div>
