@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import MedInfo from "./medInfo";
 
 export default function MedSup(props) {
   let [medsup, setMedSup] = useState([]);
@@ -88,6 +89,7 @@ export default function MedSup(props) {
       {/* ADD FORM  */}   
         <div class="col">
         <div className="mb-3 container rounded-3 border border-info bg-light p-4 mt-3">
+
           <h5>Add New Medication / Supplement</h5>
             <small className="text-muted">Enter Medication and Supplements here</small>
 

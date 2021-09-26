@@ -82,31 +82,27 @@ export default function Contact(props) {
   };
 
   return (
-    <div className="mb-3 container rounded-3 border border-info bg-light p-4 mt-3">
+  <div className="mb-3 container rounded-3 border border-info bg-light p-4 mt-3">
       
-      {/* START OF LIST  */} 
-      <h4>Frequent Contact List</h4>
-      
+    {/* START OF LIST  */} 
+    <h4>Frequent Contact List</h4>
       <div class="list group">
-        
-     {/*  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start active"> */}
-        {contact.map((item) => {
-          return (
-            <a href="#" class="list-group-item list-group-item-action row">
-              {/* <div class="d-flex w-35 justify-content-between"> */}
-                <ul key={item.contactID}>
-                <h5 class="mb-1"><img src="https://i.postimg.cc/0rRgmFtB/Ssyang-Contact.png" height="25"></img> {item.contactName} ({item.relationship})</h5>
-                <p class="mb-1">Contact: {item.telNo}</p>
-              </ul>
-             {/*  </div> */}
-            </a>
-          );
-        })}
-      {/* </a> */}
-    
+ 
+      {contact.map((item) => {
+        return (
+          <a href="#" class="list-group-item list-group-item-action row">
+           <ul key={item.contactID}>
+              <h6 class="mb-1"><img src="https://i.postimg.cc/0rRgmFtB/Ssyang-Contact.png" height="25"></img> {item.contactName} ({item.relationship})</h6>
+               <p class="mb-1">Contact: {item.telNo}</p>
+            </ul>
+         </a>
+        );
+      })}    
       </div>
+      {/* END OF CONTACT NAME LIST */} 
     
      <p/>    
+     {/* ADD NEW CONTACT BUTTON */} 
       <button
         class="btn btn-outline-info btn-sm rounded-pill btn-bloc"
         type="button"
@@ -116,12 +112,13 @@ export default function Contact(props) {
         aria-controls="addNewContact">
           + New Contact
       </button>
-    
-        
-        {/* ADD FORM  */} 
-       <p/><div class="collapse" id="addNewContact">
+      {/* END OF BUTTON */} 
+      
+      <p/>
+      {/* ADD FORM  */} 
+      <div class="collapse" id="addNewContact">
         <div class="card card-body">
-          
+
           <h5>Add New Contact</h5>
             <small className="text-muted">Enter Frequent Contacts here</small>
         
