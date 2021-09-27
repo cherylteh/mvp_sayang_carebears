@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 export default function Register() {
   const [usernameReg, setUsernameReg] = useState("");
   const [passwordReg, setPasswordReg] = useState("");
   const [passwordRepeat, setPasswordRepeat] = useState("");
+  const history = useHistory();
 
   function register(e) {
     e.preventDefault();
@@ -20,7 +21,12 @@ export default function Register() {
       })
       .then((result) => {
         //console.log(result);
+        if (result.message !== "Register successful") return window.location.reload();
+        else {
         alert(result.message);
+        history.push("/");
+        window.location.reload();
+      }
       })
       .catch((error) => {
         console.log(error);
@@ -85,9 +91,9 @@ export default function Register() {
       </form>
       <p />
       <small className="text-muted">
-        Already have an account?{" "}
+        Already have an account?&nbsp;
         <Link to="/login">
-          Login
+          Login here.
         </Link>
       </small>
     </div>

@@ -1,4 +1,4 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
 const db = require("../model/helper");
 require("dotenv").config();
@@ -10,32 +10,39 @@ const supersecret = process.env.SUPER_SECRET;
 
 const auth = require("../guards/auth");
 
-router.get('/', function(req, res, next) {
+router.get("/", function (req, res, next) {
   db("SELECT * FROM users ORDER BY userID ASC;")
-    .then(results => {
+    .then((results) => {
       res.send(results.data);
     })
-    .catch(err => res.status(500).send(err));
+    .catch((err) => res.status(500).send(err));
 });
 
 router.post("/register", async (req, res) => {
-    const { usernameReg, passwordReg, passwordRepeat } = req.body;
-    // validate fields not entered
-    if (!usernameReg || !passwordReg || !passwordRepeat)
-    return res.status(400).send({ errorMessage: "Please enter all required fields" });
-    //validate password too short
-    if (passwordReg.length < 6)
-    return res.status(400).send({ errorMessage: "Please enter a minimum of 6 characters for your password" });
-    //validate repeat password
-    if (passwordReg !== passwordRepeat)
-    return res.status(400).send({ errorMessage: "Password does not match" });
-    //validate if username already exists
-    const exists = await db(
-      `SELECT * FROM users WHERE username = "${usernameReg}"`
-    );
-    console.log(exists);
-    if (exists.data.length >= 1)
-    return res.status(400).send({ errorMessage: `User ${usernameReg} already exists` });
+  const { usernameReg, passwordReg, passwordRepeat } = req.body;
+  // validate fields not entered
+  if (!usernameReg || !passwordReg || !passwordRepeat)
+    return res
+      .status(400)
+      .send({ message: "Please enter all required fields" });
+  //validate password too short
+  if (passwordReg.length < 6)
+    return res
+      .status(400)
+      .send({
+        message: "Please enter a minimum of 6 characters for your password",
+      });
+  //validate repeat password
+  if (passwordReg !== passwordRepeat)
+    return res.status(400).send({ message: "Password does not match" });
+  //validate if username already exists
+  const exists = await db(
+    `SELECT * FROM users WHERE username = "${usernameReg}"`
+  );
+  if (exists.data.length >= 1)
+    return res
+      .status(400)
+      .send({ message: `User ${usernameReg} already exists` });
   try {
     //passed all validation, now to hash the password
     const hash = await bcrypt.hash(passwordReg, saltRounds);
@@ -44,7 +51,7 @@ router.post("/register", async (req, res) => {
       `INSERT INTO users (username, password) VALUES ("${usernameReg}", "${hash}")`
     );
     res.send({ message: "Register successful" });
-    
+
     /* 
     //login after registered - not yet
     const results = await db(
@@ -53,9 +60,9 @@ router.post("/register", async (req, res) => {
     const user = results.data[0];
     const user_id = user.id;
     let token = jwt.sign({ user_id }, supersecret);
-    res.send({ message: "Login successful, here is your token", token })
+    res.send({ message: "Login successful", token })
     //send token in cookie
-    //res.cookie("token", token, {httpOnly:true}).send(); 
+    //res.cookie("token", token, {httpOnly:true}).send();  
     */
   } catch (err) {
     res.status(400).send({ message: err.message });
@@ -64,8 +71,10 @@ router.post("/register", async (req, res) => {
 
 router.post("/login", async (req, res) => {
   const { username, password } = req.body;
-    if (!username || !password)
-    return res.status(400).send({ errorMessage: "Please enter all required fields" });
+  if (!username || !password)
+    return res
+      .status(400)
+      .send({ message: "Please enter all required fields" });
   try {
     // validate fields not entered
     const results = await db(
@@ -77,18 +86,20 @@ router.post("/login", async (req, res) => {
       //compare password
       const correctPassword = await bcrypt.compare(password, user.password);
       //if wrong password
-      if (!correctPassword) 
-      //return res.status(401).json({ errorMessage: "Wrong email or password"})
-      throw new Error("Wrong email or password");//convention to throw off hackers by not giving exact error
+      if (!correctPassword)
+        //return res.status(401).json({ errorMessage: "Wrong email or password"})
+        //throw new Error("Wrong email or password");
+        return res.status(400).send({ message: "Wrong username or password" }); //convention to throw off hackers by not giving exact error
       let token = jwt.sign({ user_id }, supersecret);
-      res.send({ message: "Login successful, here is your token", token })
+      //res.send({ message: "Login successful"});
+      res.send({ message: "Login successful", token });
       //send token in cookie
       //res.cookie("token", token, {httpOnly:true}).send();
-
     } else {
-    //if user does not exist
-    //return res.status(401).json({ errorMessage: "Wrong email or password"})
-      throw new Error("Wrong email or password");//convention to throw off hackers by not giving exact error
+      //if user does not exist
+      //return res.status(401).json({ errorMessage: "Wrong email or password"})
+      //throw new Error("Wrong email or password");
+      return res.status(400).send({ message: "Wrong username or password" }); //convention to throw off hackers by not giving exact error
     }
   } catch (err) {
     res.status(400).send({ message: err.message });

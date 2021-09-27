@@ -1,10 +1,13 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, browserHistory, useHistory } from "react-router-dom";
 
 const NaviBar = ({ loggedIn }) => {
+  const history = useHistory();
   const logout = () => {
     localStorage.clear();
-    alert("You have been logged out successfully");
+    alert("You have been logged out.");
+    //browserHistory.push("/");
+    history.push("/");
     window.location.reload();
   };
 
