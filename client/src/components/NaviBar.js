@@ -13,6 +13,7 @@ const NaviBar = ({ loggedIn }) => {
     <>
       {loggedIn === true && (
         <nav class="navbar fixed-top navbar-light bg-light">
+          <div class="container-fluid">
           {/* Logo */}
           <a class="navbar-brand" href="/dashboard">
             <img
@@ -43,6 +44,7 @@ const NaviBar = ({ loggedIn }) => {
                 Logout
               </button>
             </>
+          </div>
           </div>
         </nav>
       )}

@@ -6,11 +6,11 @@ import MedInfo from "./medInfo";
 const Dashboard = () => {
 
   return (
-    <div className="container">
+    <div className="container max-width=xl">
 
-      HELLO and Welcome to Sayang. What would you like to do today?
+      <h4>HELLO and Welcome to Sayang. What would you like to do today?</h4>
       <div className="row">
-          <div className="col"><Dependent /></div> 
+          <div className="col-5"><Dependent /></div> 
           <div className="col"><Contact /></div>
           <div className="col"><MedInfo /></div> 
           </div>
