@@ -40,16 +40,16 @@ export default function MedInfo() {
   };
 
   return (
-    <div className="mb-3 container rounded-3 border border-info bg-light p-4 mt-3">
-      <h4><img src="https://i.postimg.cc/bwqCMkBM/Sayang-Search.png" width="30"></img> Search for Drug Info</h4>
+    <div className="mb-3 container rounded-3 border border-info bg-light p-4 mt-2">
+      <h4><img src="https://i.postimg.cc/bwqCMkBM/Sayang-Search.png" width="30" alt="Search Icon"></img> Search for Drug Info</h4>
           <small className="text-muted">
-            Note: This seach is only applicable to USA FDA-approved drugs. For
-            best results, please enter the generic name (vs brand name)
+            Note: This search is only applicable to USA FDA-approved drugs. For
+            best results, please enter the generic name (vs brand name).
           </small>
 
       <p>
         <form 
-          className="form-floating"
+          className="form-floating mt-3"
           onSubmit={handleSubmit}
         >
           
@@ -87,18 +87,15 @@ export default function MedInfo() {
 
         <div>
         <small className="text-muted">
-          If the medication you are searching for is not FDA-approved, please
+          The information above is provided by MedlinePlus, maintained by the National Library of Medicine, part of the National Institutes of Health, USA. If the medication you are searching for is not FDA-approved, please
           search using the following websites:
           <br />
           <a href="https://mims.com" target="_blank">
             MIMS
           </a>{" "}
-          - <i>Asia-based.</i>
-          <br />
+          <i>(Asia-based)</i> or {" "} 
           <a href="https://www.medicines.org.uk/emc/" target="_blank">
-            Medicines.org.uk
-          </a>{" "}
-          - <i>UK-based.</i>
+            Medicines.org.uk </a>{" "}<i>(UK-based)</i>
         </small>
       </div>
     </div>

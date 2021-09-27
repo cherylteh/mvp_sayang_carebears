@@ -36,52 +36,74 @@ export default function Login() {
   } */
   return (
 
-    <div className="login container col-4 rounded-3 border border-info bg-light bg-opacity-75 bg-gradient p-5 mt-3">
-      <img src = "https://i.postimg.cc/nMf8mcFH/Logo-sayang-sq.jpg" alt="sayang background" />
-    
-      <h1>Login</h1>
-      <small className="text-muted">Log in with your data that you entered during registration</small>
+    <div className="login container-sm rounded-3 border border-info bg-white bg-opacity-75 bg-gradient p-5 shadow rounded">
+      <div class="row justify-content-start align-items-center">
+        <div class="col-6">
+          <img 
+          src="https://i.postimg.cc/j2wskfbt/logo-sayang-sq-fullsize.png" 
+          class="rounded mx-auto" 
+          alt="sayang logo" 
+          />
+        </div>    
       
-      <form onSubmit={login}>
-        <p />
-        <label className="form-label">
-          Your Username
-          <input
-            className="form-control border border-info"
-            type="text"
-            autoComplete="off"
-            placeholder="Username..."
-            onChange={(e) => {
-              setUsername(e.target.value);
-            }}
-          />
-        </label>
-        <p />
-        <label className="form-label">
-          Password
-          <input
-            className="form-control border border-info"
-            type="password"
-            autoComplete="off"
-            placeholder="Password..."
-            onChange={(e) => {
-              setPassword(e.target.value);
-            }}
-          />
-        </label>
-        <p />
-        <button className="btn btn-primary rounded-pill" type="submit">
-          Login
-        </button>
-      </form>
+          {/* START OF FORM */}
+          <div class="col-6">
+          <h1>Login</h1>
+            <small className="text-muted">Please log in using the same credentials when creating your account</small>
+              <form onSubmit={login}>
+              
+              {/*  USERNAME */}
+              <div class="form-floating mt-3">   
+                <input
+                  className="form-control border border-info"
+                  id="floatingInputValue"
+                  type="text"
+                  autoComplete="off"
+                  placeholder="Username..."
+                  onChange={(e) => {
+                    setUsername(e.target.value);
+                  }}
+                />
+                <label for="floatingInputValue">
+                Your Username
+                </label>
+              </div>
 
-      <p />
-      <small className="text-muted">
-        Don't have an account?&nbsp;
-        <Link to="/register">
-          Create Account here
-        </Link>
-      </small>
-    </div>
+              {/* PASSWORD */}
+              <div class="form-floating mt-3">    
+                <input
+                  className="form-control border border-info"
+                  id="floatingInputValue"
+                  type="password"
+                  autoComplete="off"
+                  placeholder="Password..."
+                  onChange={(e) => {
+                    setPassword(e.target.value);
+                  }}
+                />
+                <label for="floatingInputValue">
+                Password
+                </label>
+              </div>
+
+              <div class="d-grid gap-2 col-12 mt-4">
+                <button className="btn btn-info rounded-pill text-white" type="submit">
+                Click to Login
+                </button>
+              </div>
+          </form>
+
+          <p />
+          <small className="text-muted">
+            Don't have an account?&nbsp;
+            <Link to="/register">
+              Click to Create an Account
+            </Link>
+          </small>
+        </div>
+
+      </div>
+      </div>
+    
   );
 }

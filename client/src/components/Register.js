@@ -36,69 +36,93 @@ export default function Register() {
   }
 
   return (
-    <div className="registration container col-4 rounded-3 border border-info bg-light bg-opacity-75 bg-gradient p-5 mt-3">
-      <img
-        src="https://i.postimg.cc/nMf8mcFH/Logo-sayang-sq.jpg"
-        alt="sayang background"
-      />
-
-      <h1>Create Account</h1>
-      <small className="text-muted">
-        Please enter the following below to create an account
-      </small>
-
-      <form onSubmit={register}>
-        <p />
-        <label className="form-label">
-          Username
-          <input
-            className="form-control border border-info"
-            value={usernameReg}
-            type="text"
-            autoComplete="off"
-            onChange={(e) => {
-              setUsernameReg(e.target.value);
-            }}
+    
+    <div class="registration container-sm rounded-3 border border-info bg-white bg-opacity-75 bg-gradient p-5 shadow rounded">
+      <div class="row justify-content-start align-items-center">
+        <div class="col-6">
+          <img
+          src="https://i.postimg.cc/j2wskfbt/logo-sayang-sq-fullsize.png" 
+          class="rounded mx-auto" 
+          alt="sayang logo"
           />
-        </label>
+        </div>
 
-        <p />
-        <label className="form-label">
-          Password
-          <input
-            className="form-control border border-info"
-            value={passwordReg}
-            type="password"
-            autoComplete="off"
-            onChange={(e) => {
-              setPasswordReg(e.target.value);
-            }}
-          />
-        </label>
-        <p />
-        <label className="form-label">
-          Repeat Password
-          <input
-            className="form-control border border-info"
-            value={passwordRepeat}
-            type="password"
-            autoComplete="off"
-            onChange={(e) => {
-              setPasswordRepeat(e.target.value);
-            }}
-          />
-        </label>
+       {/* START OF FORM */}
+        <div class="col-6">
+          <h1>Create Account</h1>
+            <small className="text-muted">
+            Please enter the following information to create your account
+            </small>
+              <form onSubmit={register}> 
 
-        <p />
-        <button className="btn btn-info rounded-pill" type="submit">
-          Register
-        </button>
-      </form>
-      <p />
-      <small className="text-muted">
-        Already have an account?&nbsp;
-        <Link to="/login">Login here.</Link>
-      </small>
-    </div>
+                {/*  USERNAME */}
+                <div class="form-floating mt-3">           
+                  <input
+                    className="form-control border border-info"
+                    id="floatingInputValue"
+                    value={usernameReg}
+                    type="text"
+                    autoComplete="off"
+                    onChange={(e) => {
+                      setUsernameReg(e.target.value);
+                    }}
+                  />
+                  <label for="floatingInputValue">
+                  Username
+                  </label>
+                </div>
+            
+              {/* PASSWORD */}
+                <div class="form-floating mt-3">      
+                  <input
+                    className="form-control border border-info"
+                    id="floatingInputValue"
+                    value={passwordReg}
+                    type="password"
+                    autoComplete="off"
+                    onChange={(e) => {
+                      setPasswordReg(e.target.value);
+                    }}
+                  />
+                  <label for="floatingInputValue">
+                  Password
+                  </label>
+                </div>
+
+              {/* CONFIRM PASSWORD */}
+                <div class="form-floating mt-3">      
+                  <input
+                    className="form-control border border-info"
+                    id="floatingInputValue"
+                    value={passwordRepeat}
+                    type="password"
+                    autoComplete="off"
+                    onChange={(e) => {
+                      setPasswordRepeat(e.target.value);
+                    }}
+                  />
+                  <label for="floatingInputValue">
+                  Confirm Password
+                  </label>
+                </div>
+
+            
+              <div class="d-grid gap-2 col-12 mt-4">
+              <button className="btn btn-info rounded-pill text-white" type="submit">
+                Click to Create Account
+              </button>
+              </div>
+          </form>
+      
+          <p />
+            <small className="text-muted">
+              Already have an account?&nbsp;
+              <Link to="/login">Login here</Link>
+            </small>
+        </div>
+
+      </div>
+    </div>     
+  
   );
 }

@@ -82,18 +82,22 @@ export default function Contact(props) {
   };
 
   return (
-  <div className="mb-3 container rounded-3 border border-info bg-light p-4 mt-3">
+  <div className="mb-3 container rounded-3 border border-info bg-light p-4 mt-2">
       
     {/* START OF LIST  */} 
-    <h4>Frequent Contact List</h4>
+    <h4>Central Contact List</h4>
+        <small className="text-muted">
+            Frequent contacts
+        </small>
       <div class="list group">
  
       {contact.map((item) => {
         return (
           <a href="#" class="list-group-item list-group-item-action row">
            <ul key={item.contactID}>
-              <h6 class="mb-1"><img src="https://i.postimg.cc/0rRgmFtB/Ssyang-Contact.png" height="25"></img> {item.contactName} ({item.relationship})</h6>
-               <p class="mb-1">Contact: {item.telNo}</p>
+              <h5><img src="https://i.postimg.cc/0rRgmFtB/Ssyang-Contact.png" height="25"></img> {item.contactName} </h5>
+              Relationship: {item.relationship}
+              <p>Contact: {item.telNo}</p>
             </ul>
          </a>
         );

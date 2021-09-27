@@ -3,16 +3,19 @@ import Contact from "./Contact";
 import Dependent from "./Dependent";
 import MedInfo from "./medInfo";
 
+const date = Date().toLocaleString();
 const Dashboard = () => {
 
   return (
-    <div className="container max-width=xl">
+    <div className="container-xl">
 
-      <h4>HELLO and Welcome to Sayang. What would you like to do today?</h4>
+      <p class="text-secondary text-left"><h3>HELLO! It's currently {date}. 
+      <p/>What would you like to do today?</h3></p>
+
       <div className="row">
-          <div className="col-5"><Dependent /></div> 
-          <div className="col"><Contact /></div>
-          <div className="col"><MedInfo /></div> 
+          <div className="col-lg"><Dependent /></div> 
+          <div className="col-lg"><Contact /></div>
+          <div className="col-lg"><MedInfo /></div> 
           </div>
     </div>
   );

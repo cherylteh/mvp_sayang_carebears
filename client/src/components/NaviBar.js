@@ -13,37 +13,57 @@ const NaviBar = ({ loggedIn }) => {
   return (
     <>
       {loggedIn === true && (
-        <nav class="container-fluid navbar fixed-top navbar-light bg-light">
+      
+        <nav class="container-fluid navbar fixed-top navbar-light bg-white shadow-sm">
+          
           {/* Logo */}
           <Link className="nav-item nav-link" to="/">
             <img
               src="https://i.postimg.cc/sDLhJjr8/logo-sayang-space-hor.png"
-              height="50"
+              height="75"
               alt="Sayang Logo"
             ></img>
           </Link>
 
           <div className="nav justify-content-end">
-            <Link className="nav-item nav-link" to="/dashboard">
-              Dashboard
-            </Link>
-            <Link className="nav-item nav-link" to="/dependent">
-              Dependent
-            </Link>
-            <Link className="nav-item nav-link" to="/medsup">
-              Medication & Supplements
-            </Link>
-            <Link className="nav-item nav-link" to="/contact">
-              Contacts List
-            </Link>
-            <Link className="nav-item nav-link" to="/medinfo">
-              Search Drug Info
-            </Link>
-            <Link className="nav-item nav-link btn btn-outline-warning" onClick={logout}>
-              Logout
-            </Link>
+            <a class="navbar-brand">
+              <Link className="nav-item text-info nav-link" to="/dashboard">
+                Dashboard
+              </Link>
+            </a>
+
+            <a class="navbar-brand">
+              <Link className="nav-item text-info nav-link" to="/dependent">
+                Dependent
+              </Link>
+            </a>
+            
+            <a class="navbar-brand">  
+              <Link className="nav-item text-info nav-link" to="/contact">
+                Contacts List
+              </Link>
+            </a>
+
+            <a class="navbar-brand">  
+              <Link className="nav-item text-info nav-link" to="/medsup">
+                Medication
+              </Link>
+            </a>
+            
+            <a class="navbar-brand">
+              <Link className="nav-item text-info nav-link" to="/medinfo">
+                Search Drug Info
+              </Link>
+            </a>
+            
+            <a class="navbar-brand">
+              <Link className="nav-item text-info nav-link btn btn-outline-warning" onClick={logout}>
+                Logout
+              </Link>
+            </a>
           </div>
         </nav>
+      
       )}
     </>
   );

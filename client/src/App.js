@@ -19,7 +19,7 @@ import {
 import MedInfo from "./components/medInfo";
 
 function App() {
-  const date = Date().toLocaleString();
+  /* const date = Date().toLocaleString(); */
   const [loggedIn, setLoggedIn] = useState(undefined);
 
   const getLoggedIn = () => {
@@ -47,8 +47,8 @@ function App() {
 
   return (
     <div>
-      <div className="p-5"></div>
-      <span className="nav justify-content-end">Current Time: {date}</span>
+      {/* <div className="container"> */}
+      {/* <span className="nav justify-content-end">Current Time: {date}</span> */}
       <Router>
         <NaviBar loggedIn={loggedIn} />
         <Switch>
@@ -71,6 +71,7 @@ function App() {
           )}
         </Switch>
       </Router>
+      {/* </div> */}
     </div>
   );
 }
