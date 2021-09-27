@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 export default function Register() {
   const [usernameReg, setUsernameReg] = useState("");
   const [passwordReg, setPasswordReg] = useState("");
+  const [passwordRepeat, setPasswordRepeat] = useState("");
 
   function register(e) {
     e.preventDefault();
@@ -12,7 +13,7 @@ export default function Register() {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ usernameReg, passwordReg }),
+      body: JSON.stringify({ usernameReg, passwordReg, passwordRepeat }),
     })
       .then((result) => {
         return result.json();
@@ -63,6 +64,19 @@ export default function Register() {
             }}
           />
         </label>
+        <p />
+        <label className="form-label">
+          Repeat Password
+          <input
+            className="form-control border border-info"
+            value={passwordRepeat}
+            type="password"
+            autoComplete="off"
+            onChange={(e) => {
+              setPasswordRepeat(e.target.value);
+            }}
+          />
+        </label>
 
         <p />
         <button className="btn btn-info rounded-pill" type="submit">
@@ -72,7 +86,7 @@ export default function Register() {
       <p />
       <small className="text-muted">
         Already have an account?{" "}
-        <Link className="nav-item nav-link" to="/login">
+        <Link to="/login">
           Login
         </Link>
       </small>

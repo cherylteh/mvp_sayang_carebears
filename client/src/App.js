@@ -55,18 +55,18 @@ function App() {
           {loggedIn === false && (
             <>
               <Route exact path="/" component={() => <Login />} />
-              <Route exact path="/login" component={() => <Login />} />
-              <Route exact path="/register" component={() => <Register />} />
+              <Route path="/login" component={() => <Login />} />
+              <Route path="/register" component={() => <Register />} />
             </>
           )}
           {loggedIn === true && (
             <>
               <Route exact path="/" component={() => <Dashboard />} />
-              <Route exact path="/Dashboard" component={() => <Dashboard />} />
-              <Route exact path="/Dependent" component={() => <Dependent />} />
-              <Route exact path="/MedSup" component={() => <MedSup />} />
-              <Route exact path="/Contact" component={() => <Contact />} />
-              <Route exact path="/MedInfo" component={() => <MedInfo />} />
+              <Route path="/Dashboard" component={() => <Dashboard />} />
+              <Route path="/Dependent" component={() => <Dependent />} />
+              <Route path="/MedSup" component={() => <MedSup />} />
+              <Route path="/Contact" component={() => <Contact />} />
+              <Route path="/MedInfo" component={() => <MedInfo />} />
             </>
           )}
         </Switch>

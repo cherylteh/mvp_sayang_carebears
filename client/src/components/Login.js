@@ -77,7 +77,7 @@ export default function Login() {
       <p />
       <small className="text-muted">
         Don't have an account?{" "}
-        <Link className="nav-item nav-link" to="/register">
+        <Link to="/register">
           Create Account here
         </Link>
       </small>
