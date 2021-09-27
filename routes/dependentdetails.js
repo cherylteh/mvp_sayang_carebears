@@ -11,7 +11,7 @@ const getAllDependents = (req, res) => {
 };
 
 const getDependentwithMeds = (req, res) => {
-    db("SELECT dependent.dep_name, medsup.medName, medsup.medCondition, medsup.dosage, medsup.frequency FROM dependent, medsup WHERE dependent.depID=medsup.depID;")
+    db("SELECT dependent.dep_name, medsup.medName, medsup.medType, medsup.medCondition, medsup.dosage, medsup.frequency FROM dependent, medsup WHERE dependent.depID=medsup.depID;")
       .then(results => {
         res.send(results.data);
       })
@@ -20,7 +20,7 @@ const getDependentwithMeds = (req, res) => {
 
   // GET ALL Dependents JOIN Meds table
   router.get('/', function(req, res, next) {
-    db(`SELECT dependent.dep_name, medsup.medName, medsup.medCondition, medsup.dosage, medsup.frequency FROM dependent, medsup WHERE dependent.depID=medsup.depID;`)
+    db(`SELECT dependent.dep_name, medsup.medName, medsup.medType, medsup.medCondition, medsup.dosage, medsup.frequency FROM dependent, medsup WHERE dependent.depID=medsup.depID;`)
       .then(results => {
         res.send(results.data);
       })
@@ -28,7 +28,7 @@ const getDependentwithMeds = (req, res) => {
   });
 // GET ALL Dependents - e.g. localhost:5000/dependent - WORKING
 router.get('/:id', function(req, res, next) {
-  db(`SELECT dependent.dep_name, medsup.medName, medsup.medCondition, medsup.dosage, medsup.frequency FROM dependent, medsup WHERE dependent.depID=${req.params.id} AND medsup.depID=${req.params.id};`)
+  db(`SELECT dependent.dep_name, medsup.medName, medsup.medType, medsup.medCondition, medsup.dosage, medsup.frequency FROM dependent, medsup WHERE dependent.depID=${req.params.id} AND medsup.depID=${req.params.id};`)
     .then(results => {
       res.send(results.data);
     })
@@ -37,7 +37,7 @@ router.get('/:id', function(req, res, next) {
 
 // GET Dependent by ID - e.g. localhost:5000/dependent/1 - WORKING
 router.get("/dependent:id", function(req, res, next) {
-  db(`SELECT dependent.dep_name, medsup.medName, medsup.medCondition, medsup.dosage, medsup.frequency FROM dependent, medsup WHERE dependent.depID&medsup.depID=${req.params.id};`)
+  db(`SELECT dependent.dep_name, medsup.medName, medsup.medType, medsup.medCondition, medsup.dosage, medsup.frequency FROM dependent, medsup WHERE dependent.depID&medsup.depID=${req.params.id};`)
     .then(results => {
       console.log(results.data);
       res.send(results.data[0]);

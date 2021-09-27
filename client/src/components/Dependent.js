@@ -93,61 +93,109 @@ export default function Dependent() {
   };
 
   return (
-    <div>
-
-      <h4>Dependents name: </h4>
-      <div className="card rounded-3 border border-primary bg-light p-4">{depMedsup.map((medsup) => {
-          return (
-              <div key={medsup.medID}>
-              <p>Dependent Name: {medsup.dep_name}</p>
-              <p>Name: {medsup.medName}</p>
-              <p>Type: {medsup.medType}</p>
-              <p>Condition: {medsup.medCondition}</p>
-              <p>Dosage: {medsup.dosage}</p>
-              <p>Frequency: {medsup.frequency}</p>
-              </div>
-          );
-        })}
-
+    <div class="container">
+            
+      {/* START OF DEPENDENT NAME LIST */} 
+      <div className="mb-3 container rounded-3 border border-info bg-light p-4 mt-2">
+      
         <h4>Dependents List</h4>
-        <small className="text-muted">Click on names to view records</small>
+        <small className="text-muted">Click on the name to view details</small>
         
-        {dependent.map((item) => {
-          return (
-              <div key={item.depID} onClick={() => {getDepMedSup(item.depID);}}>
-                Name: {item.dep_name} (depID:{item.depID})
-              </div>
-          );
-        })}
+        <div class="list group">
+          {dependent.map((item) => {
+            return (
+              <a href="#" class="list-group-item list-group-item-action row">
+                <ul key={item.depID}>
+                {item.dep_name} (ID:{item.depID}) 
+                <a href="#" 
+                class="link-info"
+                style={{cursor:'pointer'}} 
+                data-bs-toggle="collapse"
+                data-bs-target="#medsView"
+                aria-expanded="false"
+                aria-controls="medsView"
+                onClick={() => {getDepMedSup(item.depID);}}> Medication</a>
+                </ul>
+              </a>
+            );
+          })}
+        </div>
+        {/* END OF DEPENDENT NAME LIST */} 
+        
+        <p/>    
+        {/* ADD NEW DEPENDENT BUTTON */} 
+        <button
+          class="btn btn-outline-info btn-sm rounded-pill btn-bloc"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#addNewDependent"
+          aria-expanded="false"
+          aria-controls="addNewDependent">
+          + New Dependent
+        </button>
+        {/* END OF BUTTON */} 
+        
+        <p/>
+        {/* ADD NEW DEPENDENT FORM  */} 
+        <div class="collapse" id="addNewDependent">
+          <div class="card card-body">
 
-        <h4>Add New Dependant</h4>
-        <form>
-          <small className="text-muted">
-            Enter your dependent details here
-          </small>
-          <div className="form-group">
-            <label for="dependentName">Name</label>
-            <input
-              id="dependentName"
-              type="text"
-              className="form-control"
-              placeholder="Enter Dependent Name"
-              name="dep_name"
-              onChange={(e) => handleChange(e)}
-            />
+            <h5>Add New Dependant</h5>
+              <small className="text-muted">Enter your dependent details here</small>
+          
+            <p/>
+            <div className="form-group">
+              <form className="form-floating">
+                <div class="form-floating m-3">
+                  <input
+                    id="floatingInputValue"
+                    type="text"
+                    className="form-control"
+                    placeholder="Enter Dependent Name"
+                    name="dep_name"
+                    onChange={(e) => handleChange(e)}
+                  />
+                  <label for="floatingInputValue">Name</label>
+                </div>
+    
+                <button
+                  onClick={(e) => handleSubmit(e)}
+                  className="btn btn-outline-info rounded-pill btn-block"
+                  type="submit"
+                  value="submit"
+                >Click to Add
+                </button>
+
+              </form>
+            </div>
+            
           </div>
+        </div>
+        {/* END OF ADD NEW DEPENDENT FORM  */} 
+      
 
-          {/* onSubmit is in form tag */}
-          <button
-            onClick={(e) => handleSubmit(e)}
-            className="btn btn-outline-info rounded-pill btn-block"
-            type="submit"
-            value="submit"
-          >
-            Submit Dependent
-          </button>
-        </form>
+      {/* START OF MEDICATION VIEW */} 
+      <div class="collapse" id="medsView">
+      <div class="card-body">
+      {/*   <div className="card rounded-3 border border-info bg-light p-4"> */}
+          <h4>Medication View</h4>
+          <div class="list group">
+            {depMedsup.map((medsup) => {
+              return (
+                <a href="#" class="list-group-item list-group-item-action row">
+                <div key={medsup.medID}>
+                  {/* <p>Dependent Name: {medsup.dep_name}</p> */}
+                  <p>Name: {medsup.medName} ({medsup.medCondition})</p>
+                  <p>Dosage: {medsup.dosage} / Frequency: {medsup.frequency}</p>
+                </div>
+                </a>
+              );
+            })}
+          </div>
+        </div>
       </div>
+      </div>
+     
     </div>
   );
 }

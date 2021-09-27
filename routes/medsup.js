@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 
 const getAllMedSup = (req, res) => {
-  db(`SELECT * FROM medsup ORDER BY depID ASC;`)
+  db(`SELECT * FROM medsup ORDER BY medID DESC;`)
     .then(results => {
       res.send(results.data);
     })
@@ -35,7 +35,7 @@ router.get('/dep/:depID', function(req, res, next) {
 //GET All MEDS and SUP (by Name of Meds) e.g. localhost:5000/medsup - WORKS
 router.get('/', function(req, res, next) {
   //res.send('respond with a resource');
-  db(`SELECT * FROM medsup ORDER BY medName ASC;`)
+  db(`SELECT * FROM medsup ORDER BY medID DESC;`)
     .then(results => {
       res.send(results.data);
     })
