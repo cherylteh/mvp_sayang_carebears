@@ -14,7 +14,7 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  NavLink,
+  useHistory
 } from "react-router-dom";
 import MedInfo from "./components/medInfo";
 

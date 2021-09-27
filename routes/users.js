@@ -20,6 +20,14 @@ router.get("/", function (req, res, next) {
 
 router.post("/register", async (req, res) => {
   const { usernameReg, passwordReg, passwordRepeat } = req.body;
+  //validate if username already exists
+  const exists = await db(
+    `SELECT * FROM users WHERE username = "${usernameReg}"`
+  );
+  if (exists.data.length >= 1)
+    return res
+      .status(400)
+      .send({ message: `User ${usernameReg} already exists` });
   // validate fields not entered
   if (!usernameReg || !passwordReg || !passwordRepeat)
     return res
@@ -35,14 +43,6 @@ router.post("/register", async (req, res) => {
   //validate repeat password
   if (passwordReg !== passwordRepeat)
     return res.status(400).send({ message: "Password does not match" });
-  //validate if username already exists
-  const exists = await db(
-    `SELECT * FROM users WHERE username = "${usernameReg}"`
-  );
-  if (exists.data.length >= 1)
-    return res
-      .status(400)
-      .send({ message: `User ${usernameReg} already exists` });
   try {
     //passed all validation, now to hash the password
     const hash = await bcrypt.hash(passwordReg, saltRounds);

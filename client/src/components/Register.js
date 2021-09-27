@@ -21,12 +21,14 @@ export default function Register() {
       })
       .then((result) => {
         //console.log(result);
-        if (result.message !== "Register successful") return window.location.reload();
-        else {
-        alert(result.message);
-        history.push("/");
-        window.location.reload();
-      }
+        if (result.message !== "Register successful") {
+          alert(result.message);
+          window.location.reload();
+        } else {
+          alert(result.message);
+          history.push("/");
+          window.location.reload();
+        }
       })
       .catch((error) => {
         console.log(error);
@@ -35,14 +37,17 @@ export default function Register() {
 
   return (
     <div className="registration container col-4 rounded-3 border border-info bg-light bg-opacity-75 bg-gradient p-5 mt-3">
-      <img src = "https://i.postimg.cc/nMf8mcFH/Logo-sayang-sq.jpg" alt="sayang background" />
+      <img
+        src="https://i.postimg.cc/nMf8mcFH/Logo-sayang-sq.jpg"
+        alt="sayang background"
+      />
 
       <h1>Create Account</h1>
       <small className="text-muted">
         Please enter the following below to create an account
       </small>
-      
-    <form onSubmit={register}>
+
+      <form onSubmit={register}>
         <p />
         <label className="form-label">
           Username
@@ -92,9 +97,7 @@ export default function Register() {
       <p />
       <small className="text-muted">
         Already have an account?&nbsp;
-        <Link to="/login">
-          Login here.
-        </Link>
+        <Link to="/login">Login here.</Link>
       </small>
     </div>
   );

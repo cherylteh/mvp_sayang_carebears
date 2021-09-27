@@ -1,12 +1,11 @@
 import React from "react";
-import { Link, browserHistory, useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 const NaviBar = ({ loggedIn }) => {
   const history = useHistory();
   const logout = () => {
     localStorage.clear();
     alert("You have been logged out.");
-    //browserHistory.push("/");
     history.push("/");
     window.location.reload();
   };
@@ -14,7 +13,7 @@ const NaviBar = ({ loggedIn }) => {
   return (
     <>
       {loggedIn === true && (
-        <nav class="navbar fixed-top navbar-light bg-light">
+        <nav class="container-fluid navbar fixed-top navbar-light bg-light">
           {/* Logo */}
           <Link className="nav-item nav-link" to="/">
             <img
@@ -40,7 +39,7 @@ const NaviBar = ({ loggedIn }) => {
             <Link className="nav-item nav-link" to="/medinfo">
               Search Drug Info
             </Link>
-            <Link className="nav-item nav-link" onClick={logout}>
+            <Link className="nav-item nav-link btn btn-outline-warning" onClick={logout}>
               Logout
             </Link>
           </div>
