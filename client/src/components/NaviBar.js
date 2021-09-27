@@ -1,50 +1,47 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 const NaviBar = ({ loggedIn }) => {
-
+  const history = useHistory();
   const logout = () => {
     localStorage.clear();
-    alert("You have been logged out successfully");
+    alert("You have been logged out.");
+    history.push("/");
     window.location.reload();
   };
 
   return (
     <>
       {loggedIn === true && (
-        <nav class="navbar fixed-top navbar-light bg-light">
-          <div class="container-fluid">
+        <nav class="container-fluid navbar fixed-top navbar-light bg-light">
           {/* Logo */}
-          <a class="navbar-brand" href="/dashboard">
+          <Link className="nav-item nav-link" to="/">
             <img
               src="https://i.postimg.cc/sDLhJjr8/logo-sayang-space-hor.png"
               height="50"
               alt="Sayang Logo"
             ></img>
-          </a>
+          </Link>
 
           <div className="nav justify-content-end">
-            <>
-              <Link className="nav-item nav-link" to="/">
-                Dashboard
-              </Link>
-              <Link className="nav-item nav-link" to="/dependent">
-                Dependent
-              </Link>
-              <Link className="nav-item nav-link" to="/medsup">
-                Medication & Supplements
-              </Link>
-              <Link className="nav-item nav-link" to="/contact">
-                Contacts List
-              </Link>
-              <Link className="nav-item nav-link" to="/medinfo">
-                Search Drug Info
-              </Link>
-              <button className="nav-item nav-link" onClick={logout}>
-                Logout
-              </button>
-            </>
-          </div>
+            <Link className="nav-item nav-link" to="/dashboard">
+              Dashboard
+            </Link>
+            <Link className="nav-item nav-link" to="/dependent">
+              Dependent
+            </Link>
+            <Link className="nav-item nav-link" to="/medsup">
+              Medication & Supplements
+            </Link>
+            <Link className="nav-item nav-link" to="/contact">
+              Contacts List
+            </Link>
+            <Link className="nav-item nav-link" to="/medinfo">
+              Search Drug Info
+            </Link>
+            <Link className="nav-item nav-link btn btn-outline-warning" onClick={logout}>
+              Logout
+            </Link>
           </div>
         </nav>
       )}

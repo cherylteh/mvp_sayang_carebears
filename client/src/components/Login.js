@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-
+  const history = useHistory();
 
   const login = (e) => {
     e.preventDefault();
@@ -18,11 +18,12 @@ export default function Login() {
       .then((result) => {
         return result.json();
       })
-
       .then((result) => {
         localStorage.setItem("token", result.token);
         //console.log(result.token);
-        window.location.reload("/");
+        alert(result.message);
+        history.push("/");
+        window.location.reload();
       })
       .catch((error) => console.log(error));
       
@@ -76,8 +77,8 @@ export default function Login() {
 
       <p />
       <small className="text-muted">
-        Don't have an account?{" "}
-        <Link className="nav-item nav-link" to="/register">
+        Don't have an account?&nbsp;
+        <Link to="/register">
           Create Account here
         </Link>
       </small>

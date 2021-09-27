@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 export default function Register() {
   const [usernameReg, setUsernameReg] = useState("");
   const [passwordReg, setPasswordReg] = useState("");
+  const [passwordRepeat, setPasswordRepeat] = useState("");
+  const history = useHistory();
 
   function register(e) {
     e.preventDefault();
@@ -12,14 +14,21 @@ export default function Register() {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ usernameReg, passwordReg }),
+      body: JSON.stringify({ usernameReg, passwordReg, passwordRepeat }),
     })
       .then((result) => {
         return result.json();
       })
       .then((result) => {
         //console.log(result);
-        alert(result.message);
+        if (result.message !== "Register successful") {
+          alert(result.message);
+          window.location.reload();
+        } else {
+          alert(result.message);
+          history.push("/");
+          window.location.reload();
+        }
       })
       .catch((error) => {
         console.log(error);
@@ -28,14 +37,17 @@ export default function Register() {
 
   return (
     <div className="registration container col-4 rounded-3 border border-info bg-light bg-opacity-75 bg-gradient p-5 mt-3">
-      <img src = "https://i.postimg.cc/nMf8mcFH/Logo-sayang-sq.jpg" alt="sayang background" />
+      <img
+        src="https://i.postimg.cc/nMf8mcFH/Logo-sayang-sq.jpg"
+        alt="sayang background"
+      />
 
       <h1>Create Account</h1>
       <small className="text-muted">
         Please enter the following below to create an account
       </small>
-      
-    <form onSubmit={register}>
+
+      <form onSubmit={register}>
         <p />
         <label className="form-label">
           Username
@@ -63,6 +75,19 @@ export default function Register() {
             }}
           />
         </label>
+        <p />
+        <label className="form-label">
+          Repeat Password
+          <input
+            className="form-control border border-info"
+            value={passwordRepeat}
+            type="password"
+            autoComplete="off"
+            onChange={(e) => {
+              setPasswordRepeat(e.target.value);
+            }}
+          />
+        </label>
 
         <p />
         <button className="btn btn-info rounded-pill" type="submit">
@@ -71,10 +96,8 @@ export default function Register() {
       </form>
       <p />
       <small className="text-muted">
-        Already have an account?{" "}
-        <Link className="nav-item nav-link" to="/login">
-          Login
-        </Link>
+        Already have an account?&nbsp;
+        <Link to="/login">Login here.</Link>
       </small>
     </div>
   );
