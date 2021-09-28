@@ -60,12 +60,13 @@ export default function Register() {
                   <input
                     className="form-control border border-info"
                     id="floatingInputValue"
-                    value={usernameReg}
                     type="text"
                     autoComplete="off"
+                    placeholder="Enter desired username"
                     onChange={(e) => {
                       setUsernameReg(e.target.value);
                     }}
+                    value={usernameReg}
                   />
                   <label for="floatingInputValue">
                   Username
@@ -77,12 +78,13 @@ export default function Register() {
                   <input
                     className="form-control border border-info"
                     id="floatingInputValue"
-                    value={passwordReg}
                     type="password"
                     autoComplete="off"
+                    placeholder="Enter password: 6 characters or more"
                     onChange={(e) => {
                       setPasswordReg(e.target.value);
                     }}
+                    value={passwordReg}
                   />
                   <label for="floatingInputValue">
                   Password
@@ -94,12 +96,13 @@ export default function Register() {
                   <input
                     className="form-control border border-info"
                     id="floatingInputValue"
-                    value={passwordRepeat}
                     type="password"
                     autoComplete="off"
+                    placeholder="Enter same password"
                     onChange={(e) => {
                       setPasswordRepeat(e.target.value);
                     }}
+                    value={passwordRepeat}
                   />
                   <label for="floatingInputValue">
                   Confirm Password
