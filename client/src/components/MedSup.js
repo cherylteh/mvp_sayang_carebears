@@ -34,10 +34,10 @@ export default function MedSup() {
     return false;
   };
 
-  /* const handleRemove = (e, medID) => {
+  const handleRemove = (e, medID) => {
     console.log(medID);
     deleteMedSup(medID);
-  }; */
+  };
 
   //ADD NEW MEDICATIOn & SUPPLEMENTS
   const addMedSup = () => {
@@ -83,7 +83,7 @@ export default function MedSup() {
       });
   };
 
-  //FOR THE SELECT DEPENDENT OPTION
+  //SELECT DEPENDENT OPTION
   const [dependent, setDependent] = useState([]);
 
   const getDependent = () => {
@@ -128,6 +128,7 @@ export default function MedSup() {
   return (
     <div class="container">
       <div className="row align-items-start">
+
         {/* ADD FORM  */}
         <div class="col">
           <div className="mb-3 container rounded-3 border border-info bg-light p-4 mt-3">
@@ -139,9 +140,10 @@ export default function MedSup() {
 
             <div className="form-group">
               <form /* className="form-floating" */>
+                
                 {/* Dependent name select */}
                 <label for="enterDep">
-                  Dependent:
+                  Who is this for ?   
                   <select
                     name="depID"
                     id="enterDep"
@@ -150,6 +152,7 @@ export default function MedSup() {
                     {depList}
                   </select>
                 </label>{/* end of Dependent name select */}
+
                 {/* Med/Supplement Name */}
                 <div class="form-floating m-3">
                   <input
@@ -161,10 +164,11 @@ export default function MedSup() {
                     name="medName"
                     onChange={(e) => handleChange(e)}
                   />
-                  <label for="floatingInputValue">Meds / Supplement Name</label>
+                  <label for="floatingInputValue">Medication / Supplement Name</label>
                 </div>
-                {/* SELECT OPTION FOR MED/SUP */}
-                <div class="form-floating">
+
+               {/* SELECT OPTION FOR MED/SUP */}
+                {/* <div class="form-floating m-3">
                   <select
                     class="form-select"
                     id="floatingSelect"
@@ -174,8 +178,10 @@ export default function MedSup() {
                     <option value="Supplement">Supplement</option>
                   </select>
                   <label for="floatingSelect">Medication or Supplement?</label>
-                </div>{/* end of SELECT OPTION FOR MED/SUP */}
-                {/* Med or Supplement  */}
+                </div> */}
+                {/* end of SELECT OPTION FOR MED/SUP */} 
+
+                {/* Meds or Supplement Selection */}
                 <div class="form-floating m-3">
                   <input
                     className="form-control"
@@ -186,15 +192,13 @@ export default function MedSup() {
                     name="medType"
                     onChange={(e) => handleChange(e)}
                   />
-                  <label for="floatingInputValue">
-                    Medication or Supplement?
-                  </label>
+                  <label for="floatingInputValue">Medication or Supplement?</label>
 
                   <datalist id="types">
                     <option value="Medication"></option>
-                    <option value="Supplements"></option>
+                    <option value="Supplement"></option>
                   </datalist>
-                </div>
+                </div> 
 
                 {/* Condition  */}
                 <div class="form-floating m-3">
@@ -227,10 +231,10 @@ export default function MedSup() {
                       <label for="floatingTextarea">Dosage</label>
 
                       <datalist id="dosages">
-                        <option value="1"></option>
-                        <option value="2"></option>
-                        <option value="3"></option>
-                        <option value="4"></option>
+                        <option value="1 tablet / capsule / drop"></option>
+                        <option value="2 tablets / capsules / drops"></option>
+                        <option value="3 tablets / capsules / drops"></option>
+                        <option value="4 tablets / capsules / drops"></option>
                       </datalist>
                     </div>
                   </div>
@@ -250,14 +254,14 @@ export default function MedSup() {
                       <label for="floatingInputValue">Frequency</label>
 
                       <datalist id="frequent">
-                        <option value="1 time/day"></option>
-                        <option value="2 times/day"></option>
-                        <option value="3 times/day"></option>
                         <option value="As required"></option>
+                        <option value="1 time / day"></option>
+                        <option value="2 times / day"></option>
+                        <option value="3 times / day"></option>
+                        
                       </datalist>
                     </div>
-                  </div>
-                  {/* End of Last Row  */}
+                  </div>{/* End of Last Row  */}
                 </div>
 
                 {/* Submit Button  */}
@@ -269,46 +273,48 @@ export default function MedSup() {
                 >
                   Submit
                 </button>
-              </form>
-              {/* End of Form  */}
-            </div>
-            {/* End of Form Group  */}
-          </div>
-          {/* End of ClassName  */}
-        </div>
-        {/* End of Class  */}
+              </form> {/* End of Form  */}
+            </div> {/* End of Form Group  */}
+          </div>{/* End of ClassName  */}
+        </div> {/* End of Class  */}
         {/* END OF ADD FORM  */}
 
-        {/* MEDICATION LIST */}
+        {/* MEDICATION LIST VIEW BY ITEM LAST ADDED*/}
         <div class="col">
-          <div className="mb-3 container rounded-3 border border-info bg-light p-4 mt-3">
-            <h5>Medication & Supplement</h5>
+          <div className="mb-3 container rounded-3 border border-info bg-white p-4 mt-3">
+            <h5>Medication & Supplements</h5>
+            <small className="text-muted">
+              Use this list for checking after adding new meds / supplements. 
+            </small>
+
             <div class="list group">
               {medsup.map((item) => {
                 return (
                   <div
-                    class="list-group-item list-group-item-action row"
+                    class="list-group-item list-group-item-action row" 
                     key={item.medID}
                   >
-                    <p>
-                      Name: ({item.medID}){item.medName}, {item.medType} for{" "}
-                      {item.medCondition}
-                    </p>
-                    <p>
-                      Dosage: {item.dosage} & Frequency: {item.frequency}
-                    </p>
-                    <p>
-                      for Dep ID {item.depID} Dep Name {getDepName(item.depID)}
-                    </p>
-                  </div>
+                    For<span className="fw-bold">{getDepName(item.depID)}:</span>
+                    {item.medName}, {item.medType} for{" "}{item.medCondition}
+                    <br />Dosage: {item.dosage} / Frequency: {item.frequency}
+                 
+                    {/* DELETE BUTTON */}
+                    <div class="d-grid d-md-flex justify-content-md-end">
+                      <button
+                        className="btn btn-sm btn-outline-secondary"
+                        type="button"
+                        value="submit"
+                        onClick={(e) => handleRemove(e, item.medID)}
+                      >
+                      Delete record
+                      </button>
+                    </div> {/* End of Delete Button */}
+                  </div> 
                 );
               })}
-            </div>
-            {/* End of List Group  */}
-          </div>
-          {/* End of ClassName  */}
-        </div>
-        {/* End of Class  */}
+            </div>{/* End of List Group  */}
+          </div>{/* End of ClassName  */}
+        </div> {/* End of Class  */}
         {/* END OF MEDICATION LIST */}
       </div>
     </div>

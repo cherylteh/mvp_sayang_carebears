@@ -82,24 +82,24 @@ export default function Contact(props) {
   };
 
   return (
-  <div className="mb-3 container rounded-3 border border-info bg-light p-4 mt-2">
+  <div className="mb-3 container rounded-3 border border-info bg-white p-4 mt-2">
       
     {/* START OF LIST  */} 
     <h4>Central Contact List</h4>
         <small className="text-muted">
-            Frequent contacts
+            Shared contact list of the 'village' that helps looks after our dependents
         </small>
+
       <div class="list group">
- 
       {contact.map((item) => {
         return (
-          <a href="#" class="list-group-item list-group-item-action row">
+          < div class="list-group-item list-group-item-action row">
            <ul key={item.contactID}>
-              <h5><img src="https://i.postimg.cc/0rRgmFtB/Ssyang-Contact.png" height="25"></img> {item.contactName} </h5>
-              Relationship: {item.relationship}
+              <p class="fs-5"><img src="https://i.postimg.cc/0rRgmFtB/Ssyang-Contact.png" height="25"></img> {item.contactName} </p>
+              {item.relationship}
               <p>Contact: {item.telNo}</p>
             </ul>
-         </a>
+         </div>
         );
       })}    
       </div>
@@ -167,7 +167,7 @@ export default function Contact(props) {
 
                 <button
                   onClick={(e) => handleSubmit(e)}
-                  className="btn btn-outline-info rounded-pill btn-block"
+                  className="btn btn-outline-info rounded-pill btn-block shadow rounded"
                   type="submit"
                   value="submit"
                 >

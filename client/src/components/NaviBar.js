@@ -34,13 +34,13 @@ const NaviBar = ({ loggedIn }) => {
 
             <a class="navbar-brand">
               <Link className="nav-item text-info nav-link" to="/dependent">
-                Dependent
+                Dependents
               </Link>
             </a>
             
             <a class="navbar-brand">  
               <Link className="nav-item text-info nav-link" to="/contact">
-                Contacts List
+                Contact List
               </Link>
             </a>
 

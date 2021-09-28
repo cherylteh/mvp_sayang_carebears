@@ -21,11 +21,11 @@ router.get('/dep/:depID', function(req, res, next) {
     .catch(err => res.status(500).send(err));
 });
  */
-//GET All MEDS and SUP (by Dependent ID)
+//GET All MEDS and SUPPLEMENTS (by Dependent ID)
 router.get('/dep/:depID', function(req, res, next) {
   //res.send('respond with a resource');
   //
-  db(`SELECT dependent.dep_name, medsup.medName, medsup.medCondition, medsup.dosage, medsup.frequency FROM dependent, medsup WHERE dependent.depID=${req.params.depID}`)
+  db(`SELECT dependent.dep_name, medsup.medName, medsup.medType, medsup.medCondition, medsup.dosage, medsup.frequency FROM dependent, medsup WHERE dependent.depID=${req.params.depID}`)
     .then(results => {
       res.send(results.data);
     })
