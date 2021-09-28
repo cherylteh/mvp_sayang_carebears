@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 export default function Dependent() {
   let [dependent, setDependent] = useState([]);
   let [depMedsup, setDepMedSup] = useState([]);
+  let [active, setActive] = useState("")
   let [input, setInput] = useState({});
 
   useEffect(() => {
@@ -104,19 +105,19 @@ export default function Dependent() {
         <div class="list group">
           {dependent.map((item) => {
             return (
-              <a href="#" class="list-group-item list-group-item-action row">
-                <ul key={item.depID}>
-                {item.dep_name} (ID:{item.depID}) 
-                <a href="#" 
-                class="link-info"
+                <p key={item.depID}>
+                {item.dep_name} (ID:{item.depID})
+                <text 
+                className="link link-info"
                 style={{cursor:'pointer'}} 
+                onClick={() => {getDepMedSup(item.depID); setActive(item.dep_name);}} 
                 data-bs-toggle="collapse"
                 data-bs-target="#medsView"
                 aria-expanded="false"
                 aria-controls="medsView"
-                onClick={() => {getDepMedSup(item.depID);}}> Medication</a>
-                </ul>
-              </a>
+                > Medication
+                </text>
+                </p>
             );
           })}
         </div>
@@ -172,23 +173,23 @@ export default function Dependent() {
           </div>
         </div>
         {/* END OF ADD NEW DEPENDENT FORM  */} 
-      
+      {/* create state, click med button just modify state  */}
 
       {/* START OF MEDICATION VIEW */} 
       <div class="collapse" id="medsView">
       <div class="card-body">
       {/*   <div className="card rounded-3 border border-info bg-light p-4"> */}
-          <h4>Medication View</h4>
+          <h4>{active} Medication View </h4>
           <div class="list group">
-            {depMedsup.map((medsup) => {
+            {depMedsup.map((i) => {
               return (
-                <a href="#" class="list-group-item list-group-item-action row">
-                <div key={medsup.medID}>
+                <span class="list-group-item list-group-item-action row">
+                <div key={i.medID}>
                   {/* <p>Dependent Name: {medsup.dep_name}</p> */}
-                  <p>Name: {medsup.medName} ({medsup.medCondition})</p>
-                  <p>Dosage: {medsup.dosage} / Frequency: {medsup.frequency}</p>
+                  <p>Name: {i.medName} (for {i.medCondition})</p>
+                  <p>Dosage: {i.dosage} / Frequency: {i.frequency}</p>
                 </div>
-                </a>
+                </span>
               );
             })}
           </div>

@@ -21,7 +21,7 @@ export default function Register() {
       })
       .then((result) => {
         //console.log(result);
-        if (result.message !== "Register successful") {
+        if (result.message !== "Registration successful. Please login to continue") {
           alert(result.message);
           window.location.reload();
         } else {
