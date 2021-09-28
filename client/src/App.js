@@ -8,13 +8,11 @@ import Dashboard from "./components/Dashboard";
 import Dependent from "./components/Dependent";
 import MedSup from "./components/MedSup";
 import Contact from "./components/Contact";
-import AuthContext, { AuthContextProvider } from "./context/AuthContext";
 
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  useHistory
 } from "react-router-dom";
 import MedInfo from "./components/medInfo";
 

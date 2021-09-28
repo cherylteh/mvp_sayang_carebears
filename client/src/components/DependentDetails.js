@@ -18,8 +18,8 @@ export default function DependentDetails(props) {
     return(  
         <div>List of Dependents
             {dependent && props.dependent.map((item, index) => {
-                return <div key={index}> 
-                Name: {item.dep_name} (depID:{item.depID}) onClick={() => handleClick(item)} />
+                return <div key={index} onClick={() => handleClick(item)}> 
+                Name: {item.dep_name} (depID:{item.depID})
                 </div>
             })};
     

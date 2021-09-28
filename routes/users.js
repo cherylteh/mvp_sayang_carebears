@@ -50,7 +50,7 @@ router.post("/register", async (req, res) => {
     await db(
       `INSERT INTO users (username, password) VALUES ("${usernameReg}", "${hash}")`
     );
-    res.send({ message: "Register successful" });
+    res.send({ message: "Registration successful. Please login to continue" });
 
     /* 
     //login after registered - not yet
