@@ -19,8 +19,7 @@ export default function MedInfo() {
 
   const getMedInfo = () => {
     //link to MedLinePlus
-    //const API_KEY = "45d11eff1cff97f1b9e10ecd6c9a52ad";
-    //const BASE_URL = "https://connect.medlineplus.gov/service?";
+    
     const finalURL = `https://connect.medlineplus.gov/service?mainSearchCriteria.v.cs=2.16.840.1.113883.6.69&mainSearchCriteria.v.dn=${drugSearch}&informationRecipient.languageCode.c=en&knowledgeResponseType=application/json`;
 
     fetch(finalURL)
@@ -40,7 +39,7 @@ export default function MedInfo() {
   };
 
   return (
-    <div className="mb-3 container rounded-3 border border-info bg-light p-4 mt-2">
+    <div className="mb-3 container rounded-3 border border-info bg-white p-4 mt-2">
       <h4><img src="https://i.postimg.cc/bwqCMkBM/Sayang-Search.png" width="30" alt="Search Icon"></img> Search for Drug Info</h4>
           <small className="text-muted">
             Note: This search is only applicable to USA FDA-approved drugs. For
@@ -88,10 +87,9 @@ export default function MedInfo() {
         <div>
         <small className="text-muted">
           The information above is provided by MedlinePlus, maintained by the National Library of Medicine, part of the National Institutes of Health, USA. If the medication you are searching for is not FDA-approved, please
-          search using the following websites:
-          <br />
-          <a href="https://mims.com" target="_blank">
-            MIMS
+          search using the following websites:  
+          {" "}<a href="https://mims.com" target="_blank">
+              MIMS
           </a>{" "}
           <i>(Asia-based)</i> or {" "} 
           <a href="https://www.medicines.org.uk/emc/" target="_blank">

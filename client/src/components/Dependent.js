@@ -94,30 +94,35 @@ export default function Dependent() {
   };
 
   return (
-    <div class="container">
-            
-      {/* START OF DEPENDENT NAME LIST */} 
-      <div className="mb-3 container rounded-3 border border-info bg-light p-4 mt-2">
+    <div class="container">      
+      <div className="mb-3 container rounded-3 border border-info bg-white p-4 mt-2">
       
+        {/* START OF DEPENDENT NAME LIST */} 
         <h4>Dependents List</h4>
-        <small className="text-muted">Click on the name to view details</small>
+        <small className="text-muted">Click to view details</small>
         
         <div class="list group">
           {dependent.map((item) => {
             return (
-                <p key={item.depID}>
-                {item.dep_name} (ID:{item.depID})
-                <text 
-                className="link link-info"
-                style={{cursor:'pointer'}} 
-                onClick={() => {getDepMedSup(item.depID); setActive(item.dep_name);}} 
-                data-bs-toggle="collapse"
-                data-bs-target="#medsView"
-                aria-expanded="false"
-                aria-controls="medsView"
-                > Medication
-                </text>
-                </p>
+              <div class="list-group-item list-group-item-action row" key={item.depID}>
+                <p class="fs-5 col" ><img src="https://i.postimg.cc/YCHSX2Wv/sayang-profile2.png" height="25" p-3></img>
+                  {item.dep_name}</p> {/* (ID:{item.depID}) */}
+                  <div class="col d-grid d-md-flex justify-content-md-end">
+                    <button class="btn btn-sm btn-outline-secondary"
+                      /* className="link link-info" */
+                      style={{cursor:'pointer'}} 
+                      
+                      type="button"
+                      value="submit"
+                      onClick={() => {getDepMedSup(item.depID); setActive(item.dep_name);}} 
+                      data-bs-toggle="collapse"
+                      data-bs-target="#medsView"
+                      aria-expanded="false"
+                      aria-controls="medsView"
+                      >   View Medication
+                    </button>
+                </div>
+              </div>
             );
           })}
         </div>
@@ -126,7 +131,7 @@ export default function Dependent() {
         <p/>    
         {/* ADD NEW DEPENDENT BUTTON */} 
         <button
-          class="btn btn-outline-info btn-sm rounded-pill btn-bloc"
+          class="btn btn-outline-info btn-sm rounded-pill btn-block"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#addNewDependent"
@@ -142,7 +147,7 @@ export default function Dependent() {
           <div class="card card-body">
 
             <h5>Add New Dependant</h5>
-              <small className="text-muted">Enter your dependent details here</small>
+              <small className="text-muted">Enter dependent details here</small>
           
             <p/>
             <div className="form-group">
@@ -161,7 +166,7 @@ export default function Dependent() {
     
                 <button
                   onClick={(e) => handleSubmit(e)}
-                  className="btn btn-outline-info rounded-pill btn-block"
+                  className="btn btn-outline-info rounded-pill btn-block shadow rounded"
                   type="submit"
                   value="submit"
                 >Click to Add
@@ -173,30 +178,30 @@ export default function Dependent() {
           </div>
         </div>
         {/* END OF ADD NEW DEPENDENT FORM  */} 
-      {/* create state, click med button just modify state  */}
+      
 
-      {/* START OF MEDICATION VIEW */} 
-      <div class="collapse" id="medsView">
-      <div class="card-body">
-      {/*   <div className="card rounded-3 border border-info bg-light p-4"> */}
-          <h4>{active} Medication View </h4>
-          <div class="list group">
-            {depMedsup.map((i) => {
-              return (
-                <span class="list-group-item list-group-item-action row">
-                <div key={i.medID}>
-                  {/* <p>Dependent Name: {medsup.dep_name}</p> */}
-                  <p>Name: {i.medName} (for {i.medCondition})</p>
-                  <p>Dosage: {i.dosage} / Frequency: {i.frequency}</p>
-                </div>
-                </span>
-              );
-            })}
-          </div>
+        {/* START OF MEDICATION VIEW */} 
+        <div class="collapse" id="medsView">
+        
+            {/*   <div className="card rounded-3 border border-info bg-light p-4"> */}
+            <h5>Medication / Supplements for {active} </h5>
+            <div class="card-body">
+              <div class="list group">
+              {depMedsup.map((i) => {
+                return (
+                  <p key={i.medID}>
+                    {/* <p>Dependent Name: {medsup.dep_name}</p> */}
+                    <span className="fw-bold">{i.medName} </span>
+                    {i.medType} for {i.medCondition}  
+                    <br />{i.dosage}, {i.frequency}
+                  </p>
+                );
+              })}
+              </div>
+            </div>
         </div>
-      </div>
-      </div>
-     
+        {/* END OF MEDICATION VIEW */}
+      </div>     
     </div>
   );
 }

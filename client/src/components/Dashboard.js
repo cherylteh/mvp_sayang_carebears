@@ -7,13 +7,13 @@ const date = Date().toLocaleString();
 const Dashboard = () => {
 
   return (
-    <div className="container-xl">
+    <div className="container-xl bg-white">
 
-      <p class="text-secondary text-left"><h3>HELLO! It's currently {date}. 
-      <p/>What would you like to do today?</h3></p>
+      <h4 class="text-secondary text-right">It is currently {date}. </h4>
+     
 
       <div className="row">
-          <div className="col-lg"><Dependent /></div> 
+          <div className="col-5"><Dependent /></div> 
           <div className="col-lg"><Contact /></div>
           <div className="col-lg"><MedInfo /></div> 
           </div>
