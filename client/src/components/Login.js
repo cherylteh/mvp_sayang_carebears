@@ -26,16 +26,9 @@ export default function Login() {
         window.location.reload();
       })
       .catch((error) => console.log(error));
-      
   };
-  /* style = {
-    background: `url("https://source.unsplash.com/1600x900/?medical")`,
-    backgroundRepeat: "no-repeat",
-    backgroundPosition: "center",
-    backgroundSize: "auto",
-  } */
-  return (
 
+  return (
     <div className="login container-sm rounded-3 border border-info bg-white bg-opacity-75 bg-gradient p-5 shadow rounded">
       <div class="row justify-content-start align-items-center">
         <div class="col-6">
@@ -51,7 +44,6 @@ export default function Login() {
           <h1>Login</h1>
             <small className="text-muted">Please log in using the same credentials when creating your account</small>
               <form onSubmit={login}>
-              
               {/*  USERNAME */}
               <div class="form-floating mt-3">   
                 <input
