@@ -82,103 +82,201 @@ export default function Contact(props) {
   };
 
   return (
-  <div className="mb-3 container rounded-3 border border-info bg-white p-4 mt-2">
-      
-    {/* START OF LIST  */} 
-    <h4>Central Contact List</h4>
-        <small className="text-muted">
-            Shared contact list of the 'village' that helps looks after our dependents
-        </small>
+    <div className="rounded-3 border border-info bg-white  p-4">
+      {/* <div className="mb-3 rounded-3 border border-info bg-white p-4 mt-2"> */}
+      {/* START OF LIST  */}
+      <h4>Central Contact List</h4>
+      <small className="text-muted">
+        Shared contact list of the 'village' that helps looks after our
+        dependents
+      </small>
 
-      <div class="list group">
-      {contact.map((item) => {
-        return (
-          < div class="list-group-item list-group-item-action row">
-           <ul key={item.contactID}>
-              <p class="fs-5"><img src="https://i.postimg.cc/0rRgmFtB/Ssyang-Contact.png" height="25"></img> {item.contactName} </p>
-              {item.relationship}
-              <p>Contact: {item.telNo}</p>
-            </ul>
-         </div>
-        );
-      })}    
+      <div className="list group">
+        {contact.map((item) => {
+          return (
+            <div
+              className="list-group-item-action row p-1 m-0 "
+              key={item.contactID}
+            >
+              <p className="col m-0 p-0 align-middle">
+                <img
+                  className="pe-1 align-middle"
+                  src="https://i.postimg.cc/0rRgmFtB/Ssyang-Contact.png"
+                  height="25"
+                  alt="contact icon"
+                ></img>
+                <span className="fs-5">{item.contactName}</span> (
+                {item.relationship})
+              </p>
+              <p className="p-0 m-0" style={{ textAlign: "right" }}>
+                Contact: {item.telNo}
+              </p>
+            </div>
+          );
+        })}
       </div>
-      {/* END OF CONTACT NAME LIST */} 
-    
-     <p/>    
-     {/* ADD NEW CONTACT BUTTON */} 
+      {/* END OF CONTACT NAME LIST */}
+
+      <p />
+      {/* ADD NEW CONTACT BUTTON */}
       <button
-        class="btn btn-outline-info btn-sm rounded-pill btn-bloc"
-        type="button"
+        className="btn btn-outline-info btn-sm rounded-pill shadow  mt-3 ps-3 pe-3"
+        type="button" /* 
         data-bs-toggle="collapse"
         data-bs-target="#addNewContact"
         aria-expanded="false"
-        aria-controls="addNewContact">
-          + New Contact
+        aria-controls="addNewContact" */
+        data-bs-toggle="modal"
+        data-bs-target="#addContactModal"
+      >
+        + New Contact
       </button>
-      {/* END OF BUTTON */} 
-      
-      <p/>
-      {/* ADD FORM  */} 
-      <div class="collapse" id="addNewContact">
-        <div class="card card-body">
+      {/* END OF ADD NEW CONTACT BUTTON */}
 
-          <h5>Add New Contact</h5>
-            <small className="text-muted">Enter Frequent Contacts here</small>
-        
-            <p/><div className="form-group">
-              <form className="form-floating">
-
-              <div class="form-floating m-3">
-                <input
-                  id="floatingInputValue"
-                  type="text"
-                  className="form-control"
-                  placeholder="Enter Contact Name"
-                  name="contactName"
-                  onChange={(e) => handleChange(e)}
-                />
-                <label for="floatingInputValue">Contact Name</label>
-              </div>
-
-              <div class="form-floating m-3">
-                <input
-                  id="floatingInputValue"
-                  type="text"
-                  className="form-control"
-                  placeholder="Enter Tel No"
-                  name="telNo"
-                  onChange={(e) => handleChange(e)}
-                />
-                <label for="floatingInputValue">Tel No</label>
-              </div>
-            
-              <div class="form-floating m-3">
-                <input
-                  id="floatingInputValue"
-                  type="text"
-                  className="form-control"
-                  placeholder="Relationship to Dependent"
-                  name="relationship"
-                  onChange={(e) => handleChange(e)}
-                />
-                <label for="floatingInputValue">Relationship</label>
-              </div>
-
-                <button
-                  onClick={(e) => handleSubmit(e)}
-                  className="btn btn-outline-info rounded-pill btn-block shadow rounded"
-                  type="submit"
-                  value="submit"
-                >
-                  Click to Add
-                </button>
-              </form>
+      <p />
+      {/* START OF NEW ADD CONTACT FORM, OLD ONE PASTED AT THE END OF CODE  */}
+      <div
+        class="modal fade"
+        id="addContactModal"
+        tabindex="-1"
+        aria-labelledby="addContactModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="addContactModalLabel">
+                Add New Contact
+              </h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
             </div>
+            <div class="modal-body">
+              <small className="text-muted">Enter Frequent Contacts here</small>
+              <div className="form-group">
+                <form className="form-floating">
+                  <div className="form-floating m-3">
+                    <input
+                      id="floatingInputValue"
+                      type="text"
+                      className="form-control"
+                      placeholder="Enter Contact Name"
+                      name="contactName"
+                      onChange={(e) => handleChange(e)}
+                    />
+                    <label for="floatingInputValue">Contact Name</label>
+                  </div>
+
+                  <div className="form-floating m-3">
+                    <input
+                      id="floatingInputValue"
+                      type="text"
+                      className="form-control"
+                      placeholder="Enter Tel No"
+                      name="telNo"
+                      onChange={(e) => handleChange(e)}
+                    />
+                    <label for="floatingInputValue">Tel No</label>
+                  </div>
+
+                  <div className="form-floating m-3">
+                    <input
+                      id="floatingInputValue"
+                      type="text"
+                      className="form-control"
+                      placeholder="Relationship to Dependent"
+                      name="relationship"
+                      onChange={(e) => handleChange(e)}
+                    />
+                    <label for="floatingInputValue">Relationship</label>
+                  </div>
+
+                  <button
+                    onClick={(e) => handleSubmit(e)}
+                    className="btn btn-outline-info btn-sm rounded-pill shadow  mt-3 ps-3 pe-3"
+                    type="submit"
+                    value="submit"
+                  >
+                    Click to Add
+                  </button>
+                </form>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-outline-secondary btn-sm rounded-pill shadow  mt-3 ps-3 pe-3"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+            </div>
+          </div>
         </div>
-        </div>
-        {/* End of ADD FORM  */} 
+      </div>
+      {/* END OF NEW ADD FORM  */}
     </div>
-         
   );
 }
+// {/* START OF OLD ADD FORM  */}
+// <div className="collapse" id="addNewContact">
+// <div className="card card-body">
+//   <h5>Add New Contact</h5>
+//   <small className="text-muted">Enter Frequent Contacts here</small>
+
+//   <p />
+//   <div className="form-group">
+//     <form className="form-floating">
+//       <div className="form-floating m-3">
+//         <input
+//           id="floatingInputValue"
+//           type="text"
+//           className="form-control"
+//           placeholder="Enter Contact Name"
+//           name="contactName"
+//           onChange={(e) => handleChange(e)}
+//         />
+//         <label for="floatingInputValue">Contact Name</label>
+//       </div>
+
+//       <div className="form-floating m-3">
+//         <input
+//           id="floatingInputValue"
+//           type="text"
+//           className="form-control"
+//           placeholder="Enter Tel No"
+//           name="telNo"
+//           onChange={(e) => handleChange(e)}
+//         />
+//         <label for="floatingInputValue">Tel No</label>
+//       </div>
+
+//       <div className="form-floating m-3">
+//         <input
+//           id="floatingInputValue"
+//           type="text"
+//           className="form-control"
+//           placeholder="Relationship to Dependent"
+//           name="relationship"
+//           onChange={(e) => handleChange(e)}
+//         />
+//         <label for="floatingInputValue">Relationship</label>
+//       </div>
+
+//       <button
+//         onClick={(e) => handleSubmit(e)}
+//         className="btn btn-outline-info btn-sm rounded-pill shadow  mt-3 ps-3 pe-3"
+//         type="submit"
+//         value="submit"
+//       >
+//         Click to Add
+//       </button>
+//     </form>
+//   </div>
+// </div>
+// </div>
+// {/* START OF OLD ADD FORM  */}

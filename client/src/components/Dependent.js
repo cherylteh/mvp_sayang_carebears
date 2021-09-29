@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 export default function Dependent() {
   let [dependent, setDependent] = useState([]);
   let [depMedsup, setDepMedSup] = useState([]);
-  let [active, setActive] = useState("")
+  let [active, setActive] = useState("");
   let [input, setInput] = useState({});
 
   useEffect(() => {
@@ -22,17 +22,16 @@ export default function Dependent() {
       });
   };
 
-  
   const getDepMedSup = (id) => {
     fetch(`/details/${id}`)
-        .then(response => response.json())
-        .then(medsup => {
-            console.log(medsup);
-            setDepMedSup(medsup);
-        })
-        .catch(error => {
-            console.log("Error in medsup");
-        });
+      .then((response) => response.json())
+      .then((medsup) => {
+        console.log(medsup);
+        setDepMedSup(medsup);
+      })
+      .catch((error) => {
+        console.log("Error in medsup");
+      });
   };
 
   const handleChange = (e) => {
@@ -94,114 +93,277 @@ export default function Dependent() {
   };
 
   return (
-    <div class="container">      
-      <div className="mb-3 container rounded-3 border border-info bg-white p-4 mt-2">
-      
-        {/* START OF DEPENDENT NAME LIST */} 
-        <h4>Dependents List</h4>
-        <small className="text-muted">Click to view details</small>
-        
-        <div class="list group">
-          {dependent.map((item) => {
-            return (
-              <div class="list-group-item list-group-item-action row" key={item.depID}>
-                <p class="fs-5 col" ><img src="https://i.postimg.cc/YCHSX2Wv/sayang-profile2.png" height="25" p-3></img>
-                  {item.dep_name}</p> {/* (ID:{item.depID}) */}
-                  <div class="col d-grid d-md-flex justify-content-md-end">
-                    <button class="btn btn-sm btn-outline-secondary"
-                      /* className="link link-info" */
-                      style={{cursor:'pointer'}} 
-                      
-                      type="button"
-                      value="submit"
-                      onClick={() => {getDepMedSup(item.depID); setActive(item.dep_name);}} 
-                      data-bs-toggle="collapse"
-                      data-bs-target="#medsView"
-                      aria-expanded="false"
-                      aria-controls="medsView"
-                      >   View Medication
-                    </button>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-        {/* END OF DEPENDENT NAME LIST */} 
-        
-        <p/>    
-        {/* ADD NEW DEPENDENT BUTTON */} 
-        <button
-          class="btn btn-outline-info btn-sm rounded-pill btn-block"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#addNewDependent"
-          aria-expanded="false"
-          aria-controls="addNewDependent">
-          + New Dependent
-        </button>
-        {/* END OF BUTTON */} 
-        
-        <p/>
-        {/* ADD NEW DEPENDENT FORM  */} 
-        <div class="collapse" id="addNewDependent">
-          <div class="card card-body">
+    <div className="rounded-3 border border-info bg-white p-4">
+      {/* <div className="mb-3 rounded-3 border border-info bg-white p-4 mt-2"> */}
+      {/* START OF DEPENDENT NAME LIST */}
+      <h4>Dependents List</h4>
+      <small className="text-muted">Click to view details</small>
 
-            <h5>Add New Dependant</h5>
-              <small className="text-muted">Enter dependent details here</small>
-          
-            <p/>
-            <div className="form-group">
-              <form className="form-floating">
-                <div class="form-floating m-3">
-                  <input
-                    id="floatingInputValue"
-                    type="text"
-                    className="form-control"
-                    placeholder="Enter Dependent Name"
-                    name="dep_name"
-                    onChange={(e) => handleChange(e)}
-                  />
-                  <label for="floatingInputValue">Name</label>
-                </div>
-    
+      <div className="list-group">
+        {dependent.map((item) => {
+          return (
+            /* className="list-group-item list-group-item-action" */
+            <div
+              className="list-group-item-action rounded-2 row p-1 m-0"
+              key={item.depID}
+            >
+              <p className="col m-0 align-middle">
+                <img
+                  className="pe-1 align-middle"
+                  src="https://i.postimg.cc/NjM6jxd8/sayang-profile1.png"
+                  height="25"
+                  alt="phonebook icon"
+                />
+                {/* (ID:{item.depID}) */}
+                <span className="fs-5">{item.dep_name}</span>
+              </p>
+              <span className="col-5 m-0 p-0 clearfix">
                 <button
-                  onClick={(e) => handleSubmit(e)}
-                  className="btn btn-outline-info rounded-pill btn-block shadow rounded"
-                  type="submit"
+                  className="btn btn-sm btn-outline-secondary float-end"
+                  /* className="link link-info" */
+                  type="button"
                   value="submit"
-                >Click to Add
+                  onClick={() => {
+                    getDepMedSup(item.depID);
+                    setActive(item.dep_name);
+                  }}
+                  /* data-bs-toggle="collapse"
+                  data-bs-target="#medsView"
+                  aria-expanded="false"
+                  aria-controls="medsView" */
+                  data-bs-toggle="modal"
+                  data-bs-target="#viewMedsModal"
+                >
+                  View Medication
                 </button>
-
-              </form>
+              </span>
             </div>
-            
+          );
+        })}
+      </div>
+      {/* END OF DEPENDENT NAME LIST */}
+      {/* ADD NEW DEPENDENT BUTTON */}
+      <button
+        className="btn btn-outline-info btn-sm rounded-pill shadow  mt-3 ps-3 pe-3"
+        type="button"
+        /* data-bs-toggle="collapse"
+        data-bs-target="#addNewDependent"
+        aria-expanded="false"
+        aria-controls="addNewDependent" */
+        data-bs-toggle="modal"
+        data-bs-target="#addDepModal"
+      >
+        {" "}
+        + New Dependent
+      </button>
+      {/* END OF BUTTON */}
+
+      <p />
+      {/* START OF NEW ADD NEW DEPENDENT FORM; old pone pasted at the end */}
+      <div
+        class="modal fade"
+        id="addDepModal"
+        tabindex="-1"
+        aria-labelledby="addDepLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="addDepModalLabel">
+                Add New Dependant
+              </h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <small className="text-muted">Enter dependent details here</small>
+              <div className="form-group">
+                <form
+                  className="form-floating"
+                  onSubmit={(e) => handleSubmit(e)}
+                >
+                  <div className="form-floating m-3">
+                    <input
+                      id="floatingInputValueName"
+                      type="text"
+                      className="form-control"
+                      placeholder="Enter Dependent Name"
+                      name="dep_name"
+                      onChange={(e) => handleChange(e)}
+                    />
+                    <label for="floatingInputValueName">Name</label>
+                  </div>
+                  <button
+                    onClick={(e) => handleSubmit(e)}
+                    className="btn btn-outline-info btn-sm rounded-pill shadow  mt-3 ps-3 pe-3"
+                    type="submit"
+                    value="submit"
+                  >
+                    Click to Add
+                  </button>
+                </form>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-outline-secondary btn-sm rounded-pill shadow  mt-3 ps-3 pe-3"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+            </div>
           </div>
         </div>
-        {/* END OF ADD NEW DEPENDENT FORM  */} 
-      
+      </div>
+      {/* END OF NEW ADD NEW DEPENDENT FORM  */}
 
-        {/* START OF MEDICATION VIEW */} 
-        <div class="collapse" id="medsView">
-        
-            {/*   <div className="card rounded-3 border border-info bg-light p-4"> */}
-            <h5>Medication / Supplements for {active} </h5>
-            <div class="card-body">
-              <div class="list group">
-              {depMedsup.map((i) => {
-                return (
-                  <p key={i.medID}>
-                    {/* <p>Dependent Name: {medsup.dep_name}</p> */}
-                    <span className="fw-bold">{i.medName} </span>
-                    {i.medType} for {i.medCondition}  
-                    <br />{i.dosage}, {i.frequency}
-                  </p>
-                );
-              })}
+      {/* START OF ADD NEW DEPENDENT FORM  */}
+      <div className="collapse" id="addNewDependent">
+        <div className="card card-body">
+          <h5>Add New Dependant</h5>
+          <small className="text-muted">Enter dependent details here</small>
+
+          <p />
+          <div className="form-group">
+            <form className="form-floating">
+              <div className="form-floating m-3">
+                <input
+                  id="floatingInputValueName"
+                  type="text"
+                  className="form-control"
+                  placeholder="Enter Dependent Name"
+                  name="dep_name"
+                  onChange={(e) => handleChange(e)}
+                />
+                <label for="floatingInputValueName">Name</label>
+              </div>
+
+              <button
+                onClick={(e) => handleSubmit(e)}
+                className="btn btn-outline-info btn-sm rounded-pill shadow  mt-3 ps-3 pe-3"
+                type="submit"
+                value="submit"
+              >
+                Click to Add
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+      {/* END OF ADD NEW DEPENDENT FORM  */}
+
+      {/* START OF NEW MEDICATION VIEW; old one pasted below */}
+      <div
+        class="modal fade"
+        id="viewMedsModal"
+        tabindex="-1"
+        aria-labelledby="viewMedsModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="viewMedsModalLabel">
+                Medication / Supplements for {active}
+              </h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <div className="list group">
+                {depMedsup.map((i) => {
+                  return (
+                    <p key={i.medID}>
+                      {/* <p>Dependent Name: {medsup.dep_name}</p> */}
+                      <span className="fw-bold">{i.medName} </span>
+                      {i.medType} for {i.medCondition}
+                      <br />
+                      {i.dosage}, {i.frequency}
+                    </p>
+                  );
+                })}
               </div>
             </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-outline-secondary btn-sm rounded-pill shadow  mt-3 ps-3 pe-3"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+            </div>
+          </div>
         </div>
-        {/* END OF MEDICATION VIEW */}
-      </div>     
+      </div>
+      {/* END OF NEW MEDICATION VIEW */}
     </div>
   );
 }
+
+// {/* START OF OLD MEDICATION VIEW */}
+// <div className="collapse" id="medsView">
+// {/*   <div className="card rounded-3 border border-info bg-light p-4"> */}
+// <h5>Medication / Supplements for {active} </h5>
+// <div className="card-body">
+//   <div className="list group">
+//     {depMedsup.map((i) => {
+//       return (
+//         <p key={i.medID}>
+//           {/* <p>Dependent Name: {medsup.dep_name}</p> */}
+//           <span className="fw-bold">{i.medName} </span>
+//           {i.medType} for {i.medCondition}
+//           <br />
+//           {i.dosage}, {i.frequency}
+//         </p>
+//       );
+//     })}
+//   </div>
+// </div>
+// </div>
+// {/* END OF OLD MEDICATION VIEW */}
+
+// {/* START OF OLD ADD NEW DEPENDENT FORM  */}
+// <div className="collapse" id="addNewDependent">
+//   <div className="card card-body">
+//     <h5>Add New Dependant</h5>
+//     <small className="text-muted">Enter dependent details here</small>
+
+//     <p />
+//     <div className="form-group">
+//       <form className="form-floating">
+//         <div className="form-floating m-3">
+//           <input
+//             id="floatingInputValueName"
+//             type="text"
+//             className="form-control"
+//             placeholder="Enter Dependent Name"
+//             name="dep_name"
+//             onChange={(e) => handleChange(e)}
+//           />
+//           <label for="floatingInputValueName">Name</label>
+//         </div>
+
+//         <button
+//           onClick={(e) => handleSubmit(e)}
+//           className="btn btn-outline-info rounded-pill btn-block shadow rounded"
+//           type="submit"
+//           value="submit"
+//         >
+//           Click to Add
+//         </button>
+//       </form>
+//     </div>
+//   </div>
+// </div>
+// {/* END OF OLD ADD NEW DEPENDENT FORM  */}

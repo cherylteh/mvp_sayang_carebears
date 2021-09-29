@@ -118,7 +118,7 @@ export default function MedSup() {
         console.log("Error in medsup");
       });
   };
-
+  //getdepname for outputted list
   const getDepName = (i) => {
     //return dependent.map(id => id.dep_name)
     let ddd = dependent.find((obj) => obj.depID === i);
@@ -126,51 +126,53 @@ export default function MedSup() {
   };
 
   return (
-    <div class="container">
-      <div className="row align-items-start">
+    <div className="row align-items-start">
+      {/* ADD FORM  */}
+      <div className="col">
+        <div className="mb-3 rounded-3 border border-info bg-light p-4">
+          <h5>Add New Medication / Supplement</h5>
+          <small className="text-muted">
+            Enter Medication and Supplements here
+          </small>
+          <p />
+          <div className="form-group">
+            <form className="form-floating">
+              {/* Dependent name select */}
+              <div class="form-floating m-3">
+                <select
+                  class="form-select"
+                  aria-label="Who is this for ?"
+                  id="enterDep"
+                  name="depID"
+                  onChange={(e) => handleChange(e)}
+                  placeholder="Enter Meds/Supplement Name"
+                >
+                  {depList}
+                </select>
+                <label for="enterDep">Select Dependent</label>
+              </div>
+              {/* Dependent name select */}
 
-        {/* ADD FORM  */}
-        <div class="col">
-          <div className="mb-3 container rounded-3 border border-info bg-light p-4 mt-3">
-            <h5>Add New Medication / Supplement</h5>
-            <small className="text-muted">
-              Enter Medication and Supplements here
-            </small>
-            <p />
+              {/* Med/Supplement Name */}
+              <div className="form-floating m-3">
+                <input
+                  className="form-control"
+                  id="floatingInputValue"
+                  type="text"
+                  placeholder="Enter Meds/Supplement Name"
+                  /* autoComplete="off" */
+                  name="medName"
+                  onChange={(e) => handleChange(e)}
+                />
+                <label for="floatingInputValue">
+                  Medication / Supplement Name
+                </label>
+              </div>
 
-            <div className="form-group">
-              <form /* className="form-floating" */>
-                
-                {/* Dependent name select */}
-                <label for="enterDep">
-                  Who is this for ?   
+              {/* SELECT OPTION FOR MED/SUP */}
+              {/* <div className="form-floating m-3">
                   <select
-                    name="depID"
-                    id="enterDep"
-                    onChange={(e) => handleChange(e)}
-                  >
-                    {depList}
-                  </select>
-                </label>{/* end of Dependent name select */}
-
-                {/* Med/Supplement Name */}
-                <div class="form-floating m-3">
-                  <input
-                    className="form-control"
-                    id="floatingInputValue"
-                    type="text"
-                    placeholder="Enter Meds/Supplement Name"
-                    /* autoComplete="off" */
-                    name="medName"
-                    onChange={(e) => handleChange(e)}
-                  />
-                  <label for="floatingInputValue">Medication / Supplement Name</label>
-                </div>
-
-               {/* SELECT OPTION FOR MED/SUP */}
-                {/* <div class="form-floating m-3">
-                  <select
-                    class="form-select"
+                    className="form-select"
                     id="floatingSelect"
                     aria-label="Floating label select example"
                   >
@@ -179,144 +181,165 @@ export default function MedSup() {
                   </select>
                   <label for="floatingSelect">Medication or Supplement?</label>
                 </div> */}
-                {/* end of SELECT OPTION FOR MED/SUP */} 
+              {/* end of SELECT OPTION FOR MED/SUP */}
 
-                {/* Meds or Supplement Selection */}
-                <div class="form-floating m-3">
-                  <input
-                    className="form-control"
-                    id="floatingInputValue"
-                    list="types"
-                    type="text"
-                    placeholder="Select Medication or Supplement from dropdown"
-                    name="medType"
-                    onChange={(e) => handleChange(e)}
-                  />
-                  <label for="floatingInputValue">Medication or Supplement?</label>
+              {/* Meds or Supplement Selection */}
+              <div className="form-floating m-3">
+                <input
+                  className="form-control"
+                  id="floatingInputValue"
+                  list="types"
+                  type="text"
+                  placeholder="Select Medication or Supplement from dropdown"
+                  name="medType"
+                  onChange={(e) => handleChange(e)}
+                />
+                <label for="floatingInputValue">
+                  Medication or Supplement?
+                </label>
 
-                  <datalist id="types">
-                    <option value="Medication"></option>
-                    <option value="Supplement"></option>
-                  </datalist>
-                </div> 
+                <datalist id="types">
+                  <option value="Medication"></option>
+                  <option value="Supplement"></option>
+                </datalist>
+              </div>
 
-                {/* Condition  */}
-                <div class="form-floating m-3">
-                  <textarea
-                    className="form-control"
-                    id="floatingInputValue"
-                    style={{ height: "100px" }}
-                    type="text"
-                    rows="3"
-                    placeholder="What condition is this meds/supplement for?"
-                    name="medCondition"
-                    onChange={(e) => handleChange(e)}
-                  />
-                  <label for="floatingInputValue">Condition</label>
-                </div>
+              {/* Condition  */}
+              <div className="form-floating m-3">
+                <textarea
+                  className="form-control"
+                  id="floatingInputValue"
+                  style={{ height: "100px" }}
+                  type="text"
+                  rows="3"
+                  placeholder="What condition is this meds/supplement for?"
+                  name="medCondition"
+                  onChange={(e) => handleChange(e)}
+                />
+                <label for="floatingInputValue">Condition</label>
+              </div>
 
-                <div class="row">
-                  {/* Dosage  */}
-                  <div class="col">
-                    <div class="form-floating m-3">
-                      <input
-                        type="text"
-                        className="form-control"
-                        id="floatingTextarea"
-                        list="dosages"
-                        placeholder="Select dosage"
-                        name="dosage"
-                        onChange={(e) => handleChange(e)}
-                      />
-                      <label for="floatingTextarea">Dosage</label>
+              <div className="row">
+                {/* Dosage  */}
+                <div className="col">
+                  <div className="form-floating m-3">
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="floatingTextarea"
+                      list="dosages"
+                      placeholder="Select dosage"
+                      name="dosage"
+                      onChange={(e) => handleChange(e)}
+                    />
+                    <label for="floatingTextarea">Dosage</label>
 
-                      <datalist id="dosages">
-                        <option value="1 tablet / capsule / drop"></option>
-                        <option value="2 tablets / capsules / drops"></option>
-                        <option value="3 tablets / capsules / drops"></option>
-                        <option value="4 tablets / capsules / drops"></option>
-                      </datalist>
-                    </div>
+                    <datalist id="dosages">
+                      <option value="1 tablet / capsule / drop"></option>
+                      <option value="2 tablets / capsules / drops"></option>
+                      <option value="3 tablets / capsules / drops"></option>
+                      <option value="4 tablets / capsules / drops"></option>
+                    </datalist>
                   </div>
-
-                  {/* Frequency  */}
-                  <div class="col">
-                    <div class="form-floating m-3">
-                      <input
-                        className="form-control"
-                        id="floatingInputValue"
-                        list="frequent"
-                        type="text"
-                        placeholder="Select Frequency of dosage"
-                        name="frequency"
-                        onChange={(e) => handleChange(e)}
-                      />
-                      <label for="floatingInputValue">Frequency</label>
-
-                      <datalist id="frequent">
-                        <option value="As required"></option>
-                        <option value="1 time / day"></option>
-                        <option value="2 times / day"></option>
-                        <option value="3 times / day"></option>
-                        
-                      </datalist>
-                    </div>
-                  </div>{/* End of Last Row  */}
                 </div>
 
-                {/* Submit Button  */}
-                <button
-                  onClick={(e) => handleSubmit(e)}
-                  className="btn btn-outline-info rounded-pill btn-block"
-                  type="submit"
-                  value="submit"
+                {/* Frequency  */}
+                <div className="col">
+                  <div className="form-floating m-3">
+                    <input
+                      className="form-control"
+                      id="floatingInputValue"
+                      list="frequent"
+                      type="text"
+                      placeholder="Select Frequency of dosage"
+                      name="frequency"
+                      onChange={(e) => handleChange(e)}
+                    />
+                    <label for="floatingInputValue">Frequency</label>
+
+                    <datalist id="frequent">
+                      <option value="As required"></option>
+                      <option value="1 time / day"></option>
+                      <option value="2 times / day"></option>
+                      <option value="3 times / day"></option>
+                    </datalist>
+                  </div>
+                </div>
+                {/* End of Last Row  */}
+              </div>
+
+              {/* Submit Button  */}
+              <button
+                onClick={(e) => handleSubmit(e)}
+                className="btn btn-outline-info btn-sm rounded-pill shadow  mt-3 ps-3 pe-3"
+                type="submit"
+                value="submit"
+              >
+                Submit
+              </button>
+            </form>{" "}
+            {/* End of Form  */}
+          </div>{" "}
+          {/* End of Form Group  */}
+        </div>
+        {/* End of ClassName  */}
+      </div>{" "}
+      {/* End of Class  */}
+      {/* END OF ADD FORM  */}
+      {/* MEDICATION LIST VIEW BY ITEM LAST ADDED*/}
+      <div className="col">
+        <div className="mb-3 rounded-3 border border-info bg-white p-4">
+          <h5>Medication & Supplements</h5>
+          <small className="text-muted">
+            Use this list for checking after adding new meds / supplements.
+          </small>
+
+          <div className="list group">
+            {medsup.map((item) => {
+              return (
+                <div
+                  className="list-group-item list-group-item-action"
+                  key={item.medID}
                 >
-                  Submit
-                </button>
-              </form> {/* End of Form  */}
-            </div> {/* End of Form Group  */}
-          </div>{/* End of ClassName  */}
-        </div> {/* End of Class  */}
-        {/* END OF ADD FORM  */}
-
-        {/* MEDICATION LIST VIEW BY ITEM LAST ADDED*/}
-        <div class="col">
-          <div className="mb-3 container rounded-3 border border-info bg-white p-4 mt-3">
-            <h5>Medication & Supplements</h5>
-            <small className="text-muted">
-              Use this list for checking after adding new meds / supplements. 
-            </small>
-
-            <div class="list group">
-              {medsup.map((item) => {
-                return (
-                  <div
-                    class="list-group-item list-group-item-action row" 
-                    key={item.medID}
-                  >
-                    For<span className="fw-bold">{getDepName(item.depID)}:</span>
-                    {item.medName}, {item.medType} for{" "}{item.medCondition}
-                    <br />Dosage: {item.dosage} / Frequency: {item.frequency}
-                 
-                    {/* DELETE BUTTON */}
-                    <div class="d-grid d-md-flex justify-content-md-end">
-                      <button
-                        className="btn btn-sm btn-outline-secondary"
-                        type="button"
-                        value="submit"
-                        onClick={(e) => handleRemove(e, item.medID)}
-                      >
+                  For
+                  <span className="fw-bold"> {getDepName(item.depID)}: </span>
+                  {item.medName}, {item.medType} for {item.medCondition}
+                  <br />
+                  Dosage: {item.dosage} / Frequency: {item.frequency}
+                  {/* DELETE BUTTON */}
+                  <div className="d-grid d-md-flex justify-content-md-end">
+                    <button
+                      className="btn btn-outline-secondary btn-sm rounded-pill shadow  mt-3 ps-3 pe-3"
+                      type="button"
+                      value="submit"
+                      onClick={(e) => handleRemove(e, item.medID)}
+                    >
                       Delete record
-                      </button>
-                    </div> {/* End of Delete Button */}
-                  </div> 
-                );
-              })}
-            </div>{/* End of List Group  */}
-          </div>{/* End of ClassName  */}
-        </div> {/* End of Class  */}
-        {/* END OF MEDICATION LIST */}
-      </div>
+                    </button>
+                  </div>{" "}
+                  {/* End of Delete Button */}
+                </div>
+              );
+            })}
+          </div>
+          {/* End of List Group  */}
+        </div>
+        {/* End of ClassName  */}
+      </div>{" "}
+      {/* End of Class  */}
+      {/* END OF MEDICATION LIST */}
     </div>
   );
 }
+// {/* Dependent name select */}
+// <label for="enterDep">
+// Who is this for ?
+// <select
+//   name="depID"
+//   id="enterDep"
+//   onChange={(e) => handleChange(e)}
+// >
+//   {depList}
+// </select>
+// </label>
+// {/* end of Dependent name select */}
