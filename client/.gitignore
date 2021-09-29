@@ -4,10 +4,11 @@
 /node_modules
 /.pnp
 .pnp.js
-/src/components/DependentDetails
+/src/components/DependentDetails.js
+
 # testing
 /coverage
-
+/src/sayangcrisscross.png
 # production
 /build
 

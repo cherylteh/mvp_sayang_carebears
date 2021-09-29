@@ -52,7 +52,7 @@ const NaviBar = ({ loggedIn }) => {
             
             <a class="navbar-brand">
               <Link className="nav-item text-info nav-link" to="/medinfo">
-                Search Drug Info
+              Drug Info Search
               </Link>
             </a>
             

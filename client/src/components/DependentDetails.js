@@ -25,7 +25,7 @@ export default function DependentDetails(props) {
     
 
         <div>
-            <div className="col-4 container rounded-3 border border-info bg-light p-4 mt-3">
+            <div className="col-4 rounded-3 border border-info bg-light p-4 mt-3">
             <h4>Medication & Supplement</h4>
                 {props.medsup.map(item => {
                     return (

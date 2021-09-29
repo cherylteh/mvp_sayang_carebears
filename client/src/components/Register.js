@@ -37,18 +37,18 @@ export default function Register() {
 
   return (
     
-    <div class="registration container-sm rounded-3 border border-info bg-white bg-opacity-75 bg-gradient p-5 shadow rounded">
-      <div class="row justify-content-start align-items-center">
-        <div class="col-6">
+    <div className="registration rounded-3 border border-info bg-white bg-opacity-75 bg-gradient p-5 shadow rounded">
+      <div className="row justify-content-start align-items-center">
+        <div className="col-6">
           <img
           src="https://i.postimg.cc/j2wskfbt/logo-sayang-sq-fullsize.png" 
-          class="rounded mx-auto" 
+          className="rounded mx-auto" 
           alt="sayang logo"
           />
         </div>
 
        {/* START OF FORM */}
-        <div class="col-6">
+        <div className="col-6">
           <h1>Create Account</h1>
             <small className="text-muted">
             Please enter the following information to create your account
@@ -56,7 +56,7 @@ export default function Register() {
               <form onSubmit={register}> 
 
                 {/*  USERNAME */}
-                <div class="form-floating mt-3">           
+                <div className="form-floating mt-3">           
                   <input
                     className="form-control border border-info"
                     id="floatingInputValue"
@@ -74,7 +74,7 @@ export default function Register() {
                 </div>
             
               {/* PASSWORD */}
-                <div class="form-floating mt-3">      
+                <div className="form-floating mt-3">      
                   <input
                     className="form-control border border-info"
                     id="floatingInputValue"
@@ -92,7 +92,7 @@ export default function Register() {
                 </div>
 
               {/* CONFIRM PASSWORD */}
-                <div class="form-floating mt-3">      
+                <div className="form-floating mt-3">      
                   <input
                     className="form-control border border-info"
                     id="floatingInputValue"
@@ -110,7 +110,7 @@ export default function Register() {
                 </div>
 
             
-              <div class="d-grid gap-2 col-12 mt-4">
+              <div className="d-grid gap-2 col-12 mt-4">
               <button className="btn btn-info rounded-pill text-white" type="submit">
                 Click to Create Account
               </button>

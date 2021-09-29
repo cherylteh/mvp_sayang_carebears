@@ -44,7 +44,7 @@ function App() {
   }, []);
 
   return (
-    <div>
+    <div className="container">
       {/* <div className="container"> */}
       {/* <span className="nav justify-content-end">Current Time: {date}</span> */}
       <Router>
