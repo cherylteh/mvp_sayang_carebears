@@ -48,14 +48,13 @@ Run `node model/database.js` in your **TERMINAL**, in the **project** folder (no
 ## Basic Requirements
 
 ### 1. Database Schema
-![db_schema_20210910](https://user-images.githubusercontent.com/86417917/136497937-8f4d72a7-b4cb-4801-abdd-dd349d4a46e9.PNG)
+![image](https://user-images.githubusercontent.com/86417917/136498355-84216890-9e60-4360-b830-4820b20ef742.png)
 
 ### 2. API route Plan
 ![API Route_20210930](https://user-images.githubusercontent.com/86417917/136498170-963d85aa-ac59-49a4-9149-05126e355063.png)
 
 ### 3. User Flow Chart Diagram
 ![image](https://user-images.githubusercontent.com/86417917/136498063-902bcb7b-7b48-4196-9a8d-d550521a5bf1.png)
-
 
 
 _This is a student project that was created at [CodeOp](http://codeop.tech), a full stack development bootcamp 03 in Malaysia._
