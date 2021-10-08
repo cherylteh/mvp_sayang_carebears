@@ -48,7 +48,7 @@ Run `node model/database.js` in your **TERMINAL**, in the **project** folder (no
 ## Basic Requirements
 
 ### 1. Database Schema
-[db_schema_20210910](https://user-images.githubusercontent.com/86417917/136497937-8f4d72a7-b4cb-4801-abdd-dd349d4a46e9.PNG)
+![db_schema_20210910](https://user-images.githubusercontent.com/86417917/136497937-8f4d72a7-b4cb-4801-abdd-dd349d4a46e9.PNG)
 
 ### 2. API route Plan
 ![API Route_20210930](https://user-images.githubusercontent.com/86417917/136498170-963d85aa-ac59-49a4-9149-05126e355063.png)
