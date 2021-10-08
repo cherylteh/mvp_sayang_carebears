@@ -1,5 +1,5 @@
-# mvp_sayang_carebears
-Sayang Dependent Care and Management, final team MVP Project for MYS03 by Team CareBears, consisting for Kris and Cheryl.
+# Sayang Dependent Care and Management - Final Team Project for CodeOp MYS03 Bootcamp
+Sayang Dependent Care and Management, final team MVP Project for MYS03 by Team CareBears, consisting of cohort members Kris and Cheryl.
 
 ## Current Features
 ![ProjectSayang_CurrentFeatures_20210930](https://user-images.githubusercontent.com/86417917/136498711-0587f78e-a0ef-4826-be43-26fceaab46a7.jpg)
